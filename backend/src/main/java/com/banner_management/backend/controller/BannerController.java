@@ -7,6 +7,7 @@ import com.banner_management.backend.entity.BannerEntity;
 import com.banner_management.backend.service.BannerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -48,6 +49,7 @@ public class BannerController {
     @PostMapping("/banners")
     public ResponseEntity<BannerEntity> addBanner(@RequestBody BannerEntity bannerEntity){
         try {
+            System.out.println(" alo " + bannerEntity);
             bannerService.save(bannerEntity);
             return new ResponseEntity<BannerEntity>(bannerEntity, HttpStatus.OK);
         }catch (NoSuchElementException e){
@@ -57,11 +59,21 @@ public class BannerController {
 
     // cập nhật một banner theo id
     @PutMapping("/banners/{id}")
-    public ResponseEntity<BannerEntity> updateBannerById (@RequestBody BannerEntity bannerEntity, @PathVariable Integer id){
+    public ResponseEntity<BannerEntity> updateBannerById (@RequestBody BannerEntity banner, @PathVariable Integer id){
         try{
-            BannerEntity existBannerEntity = bannerService.getById(id);
-            bannerService.save(bannerEntity);
-            return new ResponseEntity<BannerEntity>(bannerEntity, HttpStatus.OK);
+            System.out.println("id: "+ id);
+            System.out.println(banner);
+            BannerEntity item = bannerService.getById(id);
+            item.setCode(banner.getCode());
+            item.setSectionID(banner.getSectionID());
+            item.setName(banner.getName());
+            item.setImgUrl(banner.getImgUrl());
+            item.setState(banner.getState());
+            item.setExpired(banner.getExpired());
+            item.setUserFix(banner.getUserFix());
+            item.setModifiedAt(banner.getModifiedAt());
+            bannerService.save(item);
+            return new ResponseEntity<BannerEntity>(banner, HttpStatus.OK);
         }catch (NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -74,6 +86,16 @@ public class BannerController {
             bannerService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    // Lay thong tin theo trang
+    @GetMapping("/banners/page/{number}")
+    public ResponseEntity<Page<BannerEntity>> getBannerPage(@PathVariable(value="number") int number){
+        try{
+            Page<BannerEntity> banners = bannerService.getBannerPage(number);
+            return new ResponseEntity<>(banners, HttpStatus.OK);
+        } catch(NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

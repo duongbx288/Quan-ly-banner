@@ -16,27 +16,33 @@ public class BannerEntity {
     @NotNull
     private String code;
 
-    @Column(name = "section_id")
+    @Column(name = "section_id", nullable = false)
     @NotNull
     private int sectionID;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     @NotNull
     private String name;
 
-    @Column(name = "img_url")
+    @Column(name = "img_url", nullable = false)
     @NotNull
     private String imgUrl;
 
     @Column(name = "state")
-    @NotNull
     private short state;
 
-    @Column(name = "expired")
+    @Column(name = "expired", nullable = false)
     @NotNull
     private Date expired;
 
-    @Column(name = "create_at")
+    @Column(name = "user_add", nullable = false)
+    @NotNull
+    private String userAdd;
+
+    @Column(name = "user_fix")
+    private String userFix;
+
+    @Column(name = "create_at", nullable = false)
     @NotNull
     private Date createAt;
 
@@ -45,6 +51,40 @@ public class BannerEntity {
 
     public BannerEntity() {
     }
+    @Override
+    public String toString() {
+        return "BannerEntity{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", sectionID=" + sectionID +
+                ", name='" + name + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", state=" + state +
+                ", expired=" + expired +
+                ", userAdd='" + userAdd + '\'' +
+                ", userFix='" + userFix + '\'' +
+                ", createAt=" + createAt +
+                ", modifiedAt=" + modifiedAt +
+                '}';
+    }
+
+    public String getUserAdd() {
+        return userAdd;
+    }
+
+    public void setUserAdd(String userAdd) {
+        this.userAdd = userAdd;
+    }
+
+    public String getUserFix() {
+        return userFix;
+    }
+
+    public void setUserFix(String userFix) {
+        this.userFix = userFix;
+    }
+
+
 
     public int getId() {
         return id;
@@ -118,18 +158,4 @@ public class BannerEntity {
         this.modifiedAt = modifiedAt;
     }
 
-    @Override
-    public String toString() {
-        return "BannerEntity{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", sectionID=" + sectionID +
-                ", name='" + name + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", state=" + state +
-                ", expired=" + expired +
-                ", createAt=" + createAt +
-                ", modifiedAt=" + modifiedAt +
-                '}';
-    }
 }

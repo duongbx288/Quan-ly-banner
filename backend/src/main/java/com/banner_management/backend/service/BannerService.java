@@ -8,6 +8,9 @@ import com.banner_management.backend.entity.BannerEntity;
 import com.banner_management.backend.repository.BannerRepositoty;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,6 +39,11 @@ public class BannerService  {
         }catch (NoSuchElementException e){
 
         }
+    }
+    public Page<BannerEntity> getBannerPage(int number) {
+        PagingAndSortingRepository<BannerEntity, Integer> bannerRepository = repository;
+        Page<BannerEntity> banners = bannerRepository.findAll(PageRequest.of(number, 5));
+        return banners;
     }
 
 }
