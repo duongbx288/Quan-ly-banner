@@ -24,26 +24,40 @@ function UpdateBanner(props) {
         props.history.push('/home')
     }
 
+    const getImage = (e) => {
+        // setFile(e.target.files[0]);
+        setImgUrl(URL.createObjectURL(e.target.files[0])); // đặt bản xem trước 
+    }
     const saveBanner = (e) => {
         e.preventDefault();
+        let d = new Date();
+        let year = d.getFullYear();
+        let month = d.getMonth() + 1;
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let day = d.getDate();
+        let state = 1;
+        let userFix = "Luong Van Minh";
+        let modifiedAt = year + "-" + month + "-" + day;
+        let id = 7;
 
         let bannerItem = {
-            bannerID: bannerID,
+            id: id,
+            code: bannerID,
             sectionID: sectionID,
             name: name,
             imgUrl: imgUrl,
             state: state,
             expired: expired,
-            userAdd: userAdd,
             userFix: userFix,
-            createAt: createAt,
             modifiedAt: modifiedAt
         }
         console.log('banner => ', bannerItem);
 
-        // BannerService.updateBanner(bannerItem).then(res => {
-        //     props.history.push('/banners');
-        // })
+        BannerService.updateBanner(bannerItem, id).then(res => {
+            props.history.push('/banners');
+        })
     }
 
     return (
@@ -94,7 +108,8 @@ function UpdateBanner(props) {
                                     <label id="upload-label" htmlFor="upload">Chọn Hình Ảnh</label>
 
                                     <div className="custom-file">
-                                        <input id="upload" type="file" className="form-control border-0" accept=".png,.gif,.jpg,.jpeg" />
+                                        <input id="upload" type="file" className="form-control border-0" accept=".png,.gif,.jpg,.jpeg"
+                                            onChange={getImage} />
                                     </div>
                                 </div>
 

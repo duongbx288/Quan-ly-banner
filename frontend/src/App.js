@@ -9,8 +9,8 @@ import { Services } from "./pages/Services";
 import { Events, EventsOne, EventsTwo } from "./pages/Events";
 import Contact from "./pages/ContactUs";
 import Support from "./pages/Support";
-import CreateBanner from "./components/Banner/CreateBanner";
-import UpdateBanner from "./components/Banner/UpdateBanner";
+import CreateBanner from "./components/banner/CreateBanner";
+import UpdateBanner from "./components/banner/UpdateBanner";
 
 function App({ userInfo }) {
   return (

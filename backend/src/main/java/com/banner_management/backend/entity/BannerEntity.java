@@ -13,36 +13,36 @@ public class BannerEntity {
     private int id;
 
     @Column(name = "code" , nullable = false, length = 255)
-//    @NotNull
+    @NotNull
     private String code;
 
     @Column(name = "section_id")
     private int sectionID;
 
     @Column(name = "name")
-//    @NotNull
+    @NotNull
     private String name;
 
     @Column(name = "img_url")
-//    @NotNull
+    @NotNull
     private String imgUrl;
 
     @Column(name = "state")
     private short state;
 
     @Column(name = "expired")
-//    @NotNull
+    @NotNull
     private Date expired;
 
     @Column(name = "user_add")
-//    @NotNull
+    @NotNull
     private String userAdd;
 
     @Column(name = "user_fix")
     private String userFix;
 
     @Column(name = "create_at")
-//    @NotNull
+    @NotNull
     private Date createAt;
 
     @Column(name = "modified_at")

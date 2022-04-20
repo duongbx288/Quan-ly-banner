@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import '../../styles/banner/CreateBanner.css';
 import BannerService from "../../services/BannerService";
 import * as BiIcons from "react-icons/bi";
+import Contact from "../../pages/ContactUs";
 
 function CreateBanner(props) {
 
@@ -22,13 +23,23 @@ function CreateBanner(props) {
         let d = new Date();
         let year = d.getFullYear();
         let month = d.getMonth() + 1;
+        if (month < 10) {
+            month = '0' + month;
+        }
+        console.log(month);
         let day = d.getDate();
+
+
         let state = 0;
         let userAdd = "Luong Van Minh";
-        let createAt = month + "/" + day + "/" + year;
+        let createAt = year + "-" + month + "-" + day;
+        let sectionID = 1;
+        let id = 5;
 
         let bannerItem = {
-            bannerID: bannerID,
+            id: id,
+            sectionID: sectionID,
+            code: bannerID,
             name: name,
             imgUrl: imgUrl,
             state: state,

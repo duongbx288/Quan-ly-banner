@@ -1,4 +1,4 @@
-import BannerList from "../components/Banner/BannerList"
+import BannerList from "../components/banner/BannerList"
 
 
 const BannerManage = () => {

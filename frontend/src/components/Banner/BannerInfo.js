@@ -9,6 +9,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
   // the web will change immediately without having to reload the page
   // as {bannerList} contains the list of banner the 'BannerList' component has
 
+  console.log(bannerInfo);
   const deleteConfirmation = () => {
     const confirm = window.confirm("Do you want to remove this banner?");
     if (confirm === true) {
@@ -44,10 +45,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
               <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
                 <p>Created at</p>
                 <p>
-                  {bannerInfo.createdAt !== null &&
-                  bannerInfo.createdAt !== undefined
-                    ? bannerInfo.createdAt
-                    : "____-__-__"}
+                  {bannerInfo.createdAt}
                 </p>
               </Col>
               <Col xs={6} md={4} lg={4} xl={4} className="detail-info">

@@ -11,15 +11,15 @@ class BannerService {
         return axios.post(BANNER_API_BASE_URL, banner);
     }
 
-    getCategoryById(id) {
+    getBannerById(id) {
         return axios.get(BANNER_API_BASE_URL + '/' + id);
     }
 
-    updateCategory(banner, id) {
+    updateBanner(banner, id) {
         return axios.put(BANNER_API_BASE_URL + '/' + id, banner);
     }
 
-    deleteCategory(id) {
+    deleteBanner(id) {
         return axios.delete(BANNER_API_BASE_URL + '/' + id);
     }
 }
