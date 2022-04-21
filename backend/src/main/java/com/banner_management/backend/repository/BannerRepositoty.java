@@ -2,9 +2,14 @@ package com.banner_management.backend.repository;
 
 import com.banner_management.backend.entity.BannerEntity;
 
-import org.springframework.boot.Banner;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface BannerRepositoty extends JpaRepository<BannerEntity, Integer> {
-    BannerEntity findByCode(String code);
+
+    @Query(value = "select * from banners where section_id = ?1 order by rand() limit ?2", nativeQuery = true)
+    List<BannerEntity> getRandomBySectionID(Integer sectionID, Integer id);
 }

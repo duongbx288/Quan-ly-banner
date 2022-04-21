@@ -1,11 +1,8 @@
 package com.banner_management.backend.controller;
-
 import java.util.List;
 import java.util.NoSuchElementException;
-
 import com.banner_management.backend.entity.BannerEntity;
 import com.banner_management.backend.service.BannerService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -31,9 +28,16 @@ public class BannerController {
     // lấy danh sách các banner
     @GetMapping("/banners")
     public List<BannerEntity> listBanner() {
-        System.out.println("dfsdaf");
         return bannerService.listAllBanner();
     }
+
+    // lấy random banner theo số lượng và khu vực
+    @GetMapping("/banners/random/{sectionID}/{id}")
+    public List<BannerEntity> listRandomBanner(@PathVariable Integer sectionID, @PathVariable Integer id) {
+        return bannerService.listRandomBanner(sectionID, id);
+    }
+
+
 
     // lấy một banner theo id
     @GetMapping("/banners/{id}")
@@ -46,21 +50,9 @@ public class BannerController {
         }
     }
 
-    // lấy một banner theo code
-    @GetMapping("/banners/code/{code}")
-    public ResponseEntity<BannerEntity> getBannerByCode(@PathVariable String code){
-        try{
-            BannerEntity bannerEntity = bannerService.getByCode(code);
-            return new ResponseEntity<BannerEntity>(bannerEntity, HttpStatus.OK);
-        } catch (NoSuchElementException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
     // tạo mới một banner
     @PostMapping("/banners")
     public ResponseEntity<BannerEntity> addBanner(@RequestBody BannerEntity bannerEntity){
-        System.out.println(bannerEntity);
         try {
             System.out.println(" alo " + bannerEntity);
             bannerService.save(bannerEntity);
@@ -92,7 +84,6 @@ public class BannerController {
         }
     }
 
-
     // Xoá một banner theo id
     @DeleteMapping("/banners/{id}")
     public ResponseEntity<BannerEntity> deleteBannerById(@PathVariable Integer id){
@@ -103,7 +94,6 @@ public class BannerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
     // Lay thong tin theo trang
     @GetMapping("/banners/page/{number}")
     public ResponseEntity<Page<BannerEntity>> getBannerPage(@PathVariable(value="number") int number){
