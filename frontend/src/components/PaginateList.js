@@ -1,6 +1,6 @@
 import { Pagination } from "react-bootstrap";
 import { useState } from "react";
-import "../style/paginateList.css";
+import "../styles/paginateList.css";
 
 const PaginateList = ({ currentPage, setCurrentPage, pageNumber }) => {
   let items = [];
