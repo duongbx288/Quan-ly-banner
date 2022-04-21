@@ -62,6 +62,7 @@ public class BannerController {
     public ResponseEntity<BannerEntity> addBanner(@RequestBody BannerEntity bannerEntity){
         System.out.println(bannerEntity);
         try {
+            System.out.println(" alo " + bannerEntity);
             bannerService.save(bannerEntity);
             return new ResponseEntity<BannerEntity>(bannerEntity, HttpStatus.OK);
         }catch (NoSuchElementException e){
@@ -107,9 +108,7 @@ public class BannerController {
     @GetMapping("/banners/page/{number}")
     public ResponseEntity<Page<BannerEntity>> getBannerPage(@PathVariable(value="number") int number){
         try{
-
             Page<BannerEntity> banners = bannerService.getBannerPage(number);
-
             return new ResponseEntity<>(banners, HttpStatus.OK);
         } catch(NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
