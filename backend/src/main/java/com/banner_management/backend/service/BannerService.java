@@ -32,6 +32,10 @@ public class BannerService  {
         return repository.findById(id).get();
     }
 
+    public BannerEntity getByCode(String code) {
+        return repository.findByCode(code);
+    }
+
     @Transactional
     public void delete(Integer id){
         try {
