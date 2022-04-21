@@ -55,7 +55,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
               <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
                 <p>Created at</p>
                 <p>
-                  {bannerInfo.createdAt}
+                  {bannerInfo.createAt}
                 </p>
               </Col>
               <Col xs={6} md={4} lg={4} xl={4} className="detail-info">

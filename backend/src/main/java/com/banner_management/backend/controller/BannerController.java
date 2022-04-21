@@ -46,6 +46,17 @@ public class BannerController {
         }
     }
 
+    // lấy một banner theo code
+    @GetMapping("/banners/code/{code}")
+    public ResponseEntity<BannerEntity> getBannerByCode(@PathVariable String code){
+        try{
+            BannerEntity bannerEntity = bannerService.getByCode(code);
+            return new ResponseEntity<BannerEntity>(bannerEntity, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     // tạo mới một banner
     @PostMapping("/banners")
     public ResponseEntity<BannerEntity> addBanner(@RequestBody BannerEntity bannerEntity){
@@ -95,11 +106,10 @@ public class BannerController {
     // Lay thong tin theo trang
     @GetMapping("/banners/page/{number}")
     public ResponseEntity<Page<BannerEntity>> getBannerPage(@PathVariable(value="number") int number){
-        System.out.println("1");
         try{
-            System.out.println("2");
+
             Page<BannerEntity> banners = bannerService.getBannerPage(number);
-            System.out.println("3");
+
             return new ResponseEntity<>(banners, HttpStatus.OK);
         } catch(NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
