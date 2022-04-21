@@ -54,7 +54,7 @@ function CreateBanner(props) {
         })
     }
     const handleComeBack = () => {
-        props.history.push('/banner-manage');
+        props.history.push('/banner/manage');
     }
 
     return (

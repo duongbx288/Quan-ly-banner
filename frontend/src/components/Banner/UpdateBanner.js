@@ -17,7 +17,7 @@ function UpdateBanner(props) {
     const [modifiedAt, setModifiedAt] = useState('');
 
     const handleComeBack = () => {
-        props.history.push('/banner-manage');
+        props.history.push('/banner/manage');
     }
 
     const handleLogout = () => {
