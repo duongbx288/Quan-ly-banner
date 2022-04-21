@@ -33,7 +33,7 @@ export const SidebarData = [
             },
             {
                 title: "Cập nhật banner",
-                path: "/banner/update",
+                path: "/banner/update/",
                 icon: <MdIcons.MdUpdate size={24} />,
                 cName: "sub-nav",
             },

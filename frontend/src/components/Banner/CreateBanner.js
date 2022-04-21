@@ -10,13 +10,19 @@ function CreateBanner(props) {
     const [name, setName] = useState('');
     const [expired, setExpired] = useState('');
     const [imgUrl, setImgUrl] = useState('');
-
+    const [imgName, setImgName] = useState('');
 
     const inputEl = useRef(null); // biến để giới thiệu đầu vào ẩn
     const getImage = (e) => {
-        // setFile(e.target.files[0]);
-        setImgUrl(URL.createObjectURL(e.target.files[0])); // đặt bản xem trước 
+        
+        if(e.target.files[0]){
+            setImgUrl(URL.createObjectURL(e.target.files[0]));  //đặt bản xem trước 
+        } else console.log("file not found");
+    
+        console.log(e.target.files[0].name);
+        setImgName(e.target.files[0].name);
     }
+
 
     const saveBanner = (e) => {
         e.preventDefault();
@@ -41,7 +47,7 @@ function CreateBanner(props) {
             sectionID: sectionID,
             code: bannerID,
             name: name,
-            imgUrl: imgUrl,
+            imgUrl: imgName,
             state: state,
             expired: expired,
             userAdd: userAdd,
@@ -50,7 +56,7 @@ function CreateBanner(props) {
         console.log('banner => ', bannerItem);
 
         BannerService.createBanner(bannerItem).then(res => {
-            props.history.push('/banners');
+            props.history.push('/banner/manage');
         })
     }
     const handleComeBack = () => {
@@ -109,7 +115,7 @@ function CreateBanner(props) {
                                 <h1 className="text-center">Ảnh minh họa</h1>
                             </div>
                             <div className="col-sm-12" id="imgFrame">
-                                <img className="img-rounded" alt="ảnh banner" />
+                                <img className="img-rounded" alt="ảnh banner" src={imgUrl}/>
                             </div>
                             <div className="button">
 

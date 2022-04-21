@@ -1,6 +1,8 @@
-import "../../style/bannerInfo.css";
+import "../../styles/banner/bannerInfo.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
+import {Link} from "react-router-dom";
+import { useState } from "react";
 
 const BASE_URL = "http://localhost:8080/api/banners/";
 
@@ -9,7 +11,13 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
   // the web will change immediately without having to reload the page
   // as {bannerList} contains the list of banner the 'BannerList' component has
 
-  console.log(bannerInfo);
+  const [detailInfo, setDetailInfo] = useState(bannerInfo);
+
+  const updatePage = {
+    pathname: "/banner/update/" + bannerInfo.code,
+    detailInfo: detailInfo
+  }
+
   const deleteConfirmation = () => {
     const confirm = window.confirm("Do you want to remove this banner?");
     if (confirm === true) {
@@ -20,6 +28,8 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
         setBannerList(bannerList.filter(info => info.id !== bannerInfo.id));
     }
   };
+
+
   const updateBanner = () => {
     console.log("Update");
   };
@@ -74,7 +84,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
                 <Image src="https://mdbootstrap.com/img/new/slides/041.webp" />
               </Col>
               <Col xs={3} md={3} lg={3} xl={2} className="button-choice">
-                <button onClick={updateBanner}>Update</button>
+                <button><Link to={updatePage}>Update</Link></button>
                 <button onClick={deleteConfirmation}>Delete</button>
               </Col>
             </Row>

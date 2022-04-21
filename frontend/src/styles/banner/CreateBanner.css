@@ -31,6 +31,14 @@
   border: 1px dashed black;
 }
 
+
+.create-banner-container .container .main-content #imgFrame img{
+  width: 500px;
+  height: 250px;
+  object-fit: fill;
+}
+
+
 .create-banner-container .container .main-content .row .col-sm-6.right .button {
   margin-top: 100px;
   margin-right: 40px;
@@ -56,4 +64,5 @@
   width: 180px;
   height: 40px;
 }
+
 /*# sourceMappingURL=CreateBanner.css.map */

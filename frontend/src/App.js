@@ -24,6 +24,7 @@ function App({ userInfo }) {
           <Route path="/services" exact component={Services} />
           <Route path="/banner/manage" exact component={BannerManage} />
           <Route path="/banner/create" exact component={CreateBanner} />
+          <Route path="/banner/update/:code" exact component={UpdateBanner} />
           <Route path="/banner/update" exact component={UpdateBanner} />
           <Route path="/banner/delete" exact component={CreateBanner} />
           <Route path="/contact" exact component={Contact} />
