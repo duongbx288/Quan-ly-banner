@@ -11,7 +11,8 @@ function UpdateBanner(props) {
     let data = {}
     const linkState = useLocation();
     console.log(linkState);
-    if(typeof linkState.detailInfo !== 'undefined'){
+    if (typeof linkState.detailInfo !== 'undefined') {
+
         data = linkState.detailInfo;
         console.log(data);
     }
@@ -32,13 +33,15 @@ function UpdateBanner(props) {
 
 
     const getImage = (e) => {
-        if(e.target.files[0]){
+
+        if (e.target.files[0]) {
+
             setImgUrl(URL.createObjectURL(e.target.files[0])); // đặt bản xem trước 
         } else console.log("file not found");
         // setFile(e.target.files[0]);
         console.log(e.target.files[0].name);
         setImgName(e.target.files[0].name);
-        
+
     }
     const saveBanner = (e) => {
         e.preventDefault();
@@ -133,7 +136,9 @@ function UpdateBanner(props) {
                                 <h1 className="text-center">Ảnh minh họa</h1>
                             </div>
                             <div className="col-sm-12" id="imgFrame">
-                                <img className="img-rounded" alt="ảnh banner" src={imgUrl}/>
+
+                                <img className="img-rounded" alt="ảnh banner" src={imgUrl} />
+
                             </div>
                             <div className="button">
 
@@ -155,7 +160,6 @@ function UpdateBanner(props) {
     const handleComeBack = () => {
         props.history.push('/banner/manage');
     }
-    
     const handleLogout = () => {
         props.history.push('/home')
     }

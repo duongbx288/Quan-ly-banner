@@ -23,6 +23,10 @@ public class BannerService  {
         return repository.findAll();
     }
 
+    public List<BannerEntity> listRandomBanner(int sectionID, int id){
+        return repository.getRandomBySectionID(sectionID, id);
+    }
+
     @Transactional
     public void save(BannerEntity bannerEntity){
         repository.save(bannerEntity);
@@ -30,10 +34,6 @@ public class BannerService  {
 
     public BannerEntity getById(Integer id){
         return repository.findById(id).get();
-    }
-
-    public BannerEntity getByCode(String code) {
-        return repository.findByCode(code);
     }
 
     @Transactional
@@ -49,7 +49,5 @@ public class BannerService  {
         Page<BannerEntity> banners = bannerRepository.findAll(PageRequest.of(number, 5));
         return banners;
     }
-
-
 
 }
