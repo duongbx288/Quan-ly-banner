@@ -51,7 +51,9 @@ function UpdateBanner(props) {
         let day = d.getDate();
         let modifiedAt = year + "-" + month + "-" + day;
 
-
+        // let state = 1;
+        // let userFix = "Luong Van Minh";
+        // let id = 7;
 
         let bannerItem = {
             id: bannerID,
