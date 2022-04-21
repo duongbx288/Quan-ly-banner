@@ -2,31 +2,43 @@ import React, { useState } from "react";
 import '../../styles/banner/UpdateBanner.css';
 import BannerService from "../../services/BannerService";
 import * as BiIcons from "react-icons/bi";
+import { useLocation } from "react-router-dom";
 
 function UpdateBanner(props) {
 
-    const [bannerID, setBannerID] = useState('');
-    const [sectionID, setSectionID] = useState('');
-    const [name, setName] = useState('');
-    const [imgUrl, setImgUrl] = useState('');
-    const [state, setState] = useState('');
-    const [expired, setExpired] = useState('');
-    const [userAdd, setUserAdd] = useState('');
-    const [userFix, setUserFix] = useState('');
-    const [createAt, setCreateAt] = useState('');
-    const [modifiedAt, setModifiedAt] = useState('');
-
-    const handleComeBack = () => {
-        props.history.push('/banner-manage');
+    // Vấn đề: Access link trực tiếp thì sẽ không có id
+    // Lấy thông tin banner được chọn để cho vào state của component Update thông tin
+    let data = {}
+    const linkState = useLocation();
+    console.log(linkState);
+    if (typeof linkState.detailInfo !== 'undefined') {
+        data = linkState.detailInfo;
+        console.log(data);
     }
+    //
 
-    const handleLogout = () => {
-        props.history.push('/home')
-    }
+    const [bannerID, setBannerID] = useState(data.id);
+    const [bannerCode, setBannerCode] = useState(data.code);
+    const [sectionID, setSectionID] = useState(data.sectionID);
+    const [name, setName] = useState(data.name);
+    const [imgUrl, setImgUrl] = useState(); // Dùng để show ảnh
+    const [imgName, setImgName] = useState(data.imgUrl);
+    const [state, setState] = useState(data.state);
+    const [expired, setExpired] = useState(data.expired);
+    const [userAdd, setUserAdd] = useState(data.userAdd);
+    const [userFix, setUserFix] = useState(data.userFix);
+    const [createAt, setCreateAt] = useState(data.createAt);
+    const [modifiedAt, setModifiedAt] = useState(data.modifiedAt);
+
 
     const getImage = (e) => {
+        if (e.target.files[0]) {
+            setImgUrl(URL.createObjectURL(e.target.files[0])); // đặt bản xem trước 
+        } else console.log("file not found");
         // setFile(e.target.files[0]);
-        setImgUrl(URL.createObjectURL(e.target.files[0])); // đặt bản xem trước 
+        console.log(e.target.files[0].name);
+        setImgName(e.target.files[0].name);
+
     }
     const saveBanner = (e) => {
         e.preventDefault();
@@ -37,17 +49,18 @@ function UpdateBanner(props) {
             month = '0' + month;
         }
         let day = d.getDate();
-        let state = 1;
-        let userFix = "Luong Van Minh";
         let modifiedAt = year + "-" + month + "-" + day;
-        let id = 7;
+
+        // let state = 1;
+        // let userFix = "Luong Van Minh";
+        // let id = 7;
 
         let bannerItem = {
-            id: id,
-            code: bannerID,
+            id: bannerID,
+            code: bannerCode,
             sectionID: sectionID,
             name: name,
-            imgUrl: imgUrl,
+            imgUrl: imgName,
             state: state,
             expired: expired,
             userFix: userFix,
@@ -55,8 +68,8 @@ function UpdateBanner(props) {
         }
         console.log('banner => ', bannerItem);
 
-        BannerService.updateBanner(bannerItem, id).then(res => {
-            props.history.push('/banners');
+        BannerService.updateBanner(bannerItem, bannerID).then(res => {
+            props.history.push('/banner/manage');
         })
     }
 
@@ -80,7 +93,7 @@ function UpdateBanner(props) {
                                     <label htmlFor="bannerID">Mã banner</label>
                                     <input className="form-control" id="bannerID" type="text" name="bannerID"
                                         placeholder="ex: 123..."
-                                        value={bannerID} onChange={(e) => setBannerID(e.target.value)}
+                                        value={bannerCode} onChange={(e) => setBannerCode(e.target.value)}
                                     />
                                 </div>
 
@@ -120,7 +133,7 @@ function UpdateBanner(props) {
                                 <h1 className="text-center">Ảnh minh họa</h1>
                             </div>
                             <div className="col-sm-12" id="imgFrame">
-                                <img className="img-rounded" alt="ảnh banner" />
+                                <img className="img-rounded" alt="ảnh banner" src={imgUrl} />
                             </div>
                             <div className="button">
 
@@ -139,6 +152,16 @@ function UpdateBanner(props) {
     );
 
 
+    const handleComeBack = () => {
+        props.history.push('/banner/manage');
+    }
+
+    const handleLogout = () => {
+        props.history.push('/home')
+    }
+
 }
+
+
 
 export default UpdateBanner;

@@ -7,15 +7,13 @@ import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { AboutUs, OurAim, OurVision } from "./pages/AboutUs";
-
-
 import { Services } from "./pages/Services";
 import { Events, EventsOne, EventsTwo } from "./pages/Events";
 import Contact from "./pages/ContactUs";
 import Support from "./pages/Support";
 import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
-
+import DisplayBanner from "./components/section/DisplayBanner";
 
 function App({ userInfo }) {
   return (
@@ -31,7 +29,7 @@ function App({ userInfo }) {
           <Route path="/banner/create" exact component={CreateBanner} />
           <Route path="/banner/update/:code" exact component={UpdateBanner} />
           <Route path="/banner/update" exact component={UpdateBanner} />
-          <Route path="/banner/delete" exact component={CreateBanner} />
+          <Route path="/banner/delete" exact component={DisplayBanner} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/events" exact component={Events} />
           <Route path="/events/events1" exact component={EventsOne} />
