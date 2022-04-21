@@ -26,7 +26,8 @@ const BannerList = () => {
     }); 
   }, [currentPage]);   
 
-  const displayBanner = bannerList.map((bannerInfo) => {
+  const displayBanner = bannerList.map(
+    (bannerInfo) => {
     return <BannerInfo bannerInfo={bannerInfo} key={bannerInfo.id} bannerList={bannerList} setBannerList={setBannerList}/>;
   });
   
