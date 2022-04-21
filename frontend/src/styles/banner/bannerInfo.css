@@ -1,0 +1,61 @@
+/* .banner-info{
+    color: white;
+    background-color: green;
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.image-container{
+    width: 400px;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+} */
+
+.banner-info {
+    font-size: 14px;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+.detail-info p{
+    margin: 0;
+}
+
+.detail-info hr{
+    margin: 0;
+    padding: 0;
+}
+
+.detail-info{
+    padding: 0;
+}
+
+.banner-info .image-container,
+.banner-info .button-choice{
+    padding: 0;
+    margin-right: 5px;
+}
+
+.banner-info img{
+    height: 100px;
+    min-height: 50px;
+    width: 100%;
+    min-width: 100px;
+    object-fit:fill;
+}
+
+.banner-info .button-choice button{
+    padding: 2px;
+    border: none;
+    margin: 4px;
+    width: 50px;
+}
+
+

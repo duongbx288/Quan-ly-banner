@@ -19,7 +19,7 @@ export const SidebarData = [
     },
     {
         title: "Quản lý banner",
-        path: "/banner-manage",
+        path: "/banner/manage",
         icon: <MdIcons.MdPictureInPicture size={24} />,
         iconClosed: <BiIcons.BiChevronRight size={24} />,
         iconOpened: <BiIcons.BiChevronDown size={24} />,
@@ -33,7 +33,7 @@ export const SidebarData = [
             },
             {
                 title: "Cập nhật banner",
-                path: "/banner/update",
+                path: "/banner/update/",
                 icon: <MdIcons.MdUpdate size={24} />,
                 cName: "sub-nav",
             },

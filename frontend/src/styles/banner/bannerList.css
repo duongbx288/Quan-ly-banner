@@ -1,0 +1,14 @@
+.banner-list{
+    border: 1px solid black;
+    height: 100vh;
+    width: calc(100vw - 240px);
+}
+
+.banner-list .list{
+    border: 1px solid black;
+    margin: 5px;
+    height: 80%;
+    overflow-y: scroll;
+    width: calc(100vw - 255px);
+}
+

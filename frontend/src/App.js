@@ -1,20 +1,21 @@
+
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Layout from './components/dashboard/Layout';
-import Sidebar from './components/dashboard/Sidebar';
+import BannerManage from "./pages/BannerManage";
+import Sidebar from "./components/dashboard/Sidebar";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { AboutUs, OurAim, OurVision } from "./pages/AboutUs";
-import {
-  Services,
-  ServicesThree,
-} from "./pages/Services";
+
+
+import { Services } from "./pages/Services";
 import { Events, EventsOne, EventsTwo } from "./pages/Events";
 import Contact from "./pages/ContactUs";
 import Support from "./pages/Support";
-import CreateBanner from './components/banner/CreateBanner';
-import UpdateBanner from './components/banner/UpdateBanner';
+import CreateBanner from "./components/banner/CreateBanner";
+import UpdateBanner from "./components/banner/UpdateBanner";
+
 
 function App({ userInfo }) {
   return (
@@ -26,7 +27,9 @@ function App({ userInfo }) {
           <Route path="/about-us/aim" exact component={OurAim} />
           <Route path="/about-us/vision" exact component={OurVision} />
           <Route path="/services" exact component={Services} />
+          <Route path="/banner/manage" exact component={BannerManage} />
           <Route path="/banner/create" exact component={CreateBanner} />
+          <Route path="/banner/update/:code" exact component={UpdateBanner} />
           <Route path="/banner/update" exact component={UpdateBanner} />
           <Route path="/banner/delete" exact component={CreateBanner} />
           <Route path="/contact" exact component={Contact} />
@@ -44,5 +47,3 @@ export const Home = styled.div`
 `;
 
 export default App;
-
-
