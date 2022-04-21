@@ -15,9 +15,11 @@ function CreateBanner(props) {
     const inputEl = useRef(null); // biến để giới thiệu đầu vào ẩn
     const getImage = (e) => {
 
-        if (e.target.files[0]) {
+        
+        if(e.target.files[0]){
             setImgUrl(URL.createObjectURL(e.target.files[0]));  //đặt bản xem trước 
         } else console.log("file not found");
+    
 
         console.log(e.target.files[0].name);
         setImgName(e.target.files[0].name);
@@ -115,7 +117,8 @@ function CreateBanner(props) {
                                 <h1 className="text-center">Ảnh minh họa</h1>
                             </div>
                             <div className="col-sm-12" id="imgFrame">
-                                <img className="img-rounded" alt="ảnh banner" src={imgUrl} />
+
+                                <img className="img-rounded" alt="ảnh banner" src={imgUrl}/>
                             </div>
                             <div className="button">
 

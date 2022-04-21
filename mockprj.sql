@@ -63,6 +63,7 @@ CREATE TABLE `sections` (
   `position_x` int(10) NOT NULL,
   `position_y` int(10) NOT NULL,
   `position_web` varchar(255) NOT NULL,
+  `banner_quantity` int,
   `height` int(10) NOT NULL,
   `width` int(10) NOT NULL,
   `display` text NOT NULL,

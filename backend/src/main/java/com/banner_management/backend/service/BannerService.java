@@ -49,4 +49,5 @@ public class BannerService  {
         Page<BannerEntity> banners = bannerRepository.findAll(PageRequest.of(number, 5));
         return banners;
     }
+
 }
