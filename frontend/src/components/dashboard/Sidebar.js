@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu.js";
-import Logo from './Logo.png';
+import Logo from '../Logo.png';
 import '../../styles/dashboard/style.css'
 
 const SidebarNav = styled.nav`
-  width: 230px;
+  width: 250px;
   height: 100vh;
   border-right: 2px solid #a7a7a7;
   z-index: 0;
