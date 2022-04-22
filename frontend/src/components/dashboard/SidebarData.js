@@ -42,11 +42,6 @@ export const SidebarData = [
                 path: "/banner/delete",
                 icon: <MdIcons.MdDelete size={24} />,
             },
-            {
-                title: "Xóa banner",
-                path: "/banner/delete",
-                icon: <MdIcons.MdDelete size={24} />,
-            },
         ]
     },
     {
