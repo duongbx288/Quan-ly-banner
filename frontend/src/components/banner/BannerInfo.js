@@ -1,4 +1,4 @@
-import "../../styles/banner/BannerInfo.css";
+import "../../styles/banner/bannerInfo.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
