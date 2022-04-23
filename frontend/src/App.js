@@ -15,6 +15,7 @@ import Contact from "./pages/ContactUs";
 import Support from "./pages/Support";
 import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
+import SectionList from './components/section/SectionList';
 
 
 function App({ userInfo }) {
@@ -37,6 +38,7 @@ function App({ userInfo }) {
           <Route path="/events/events1" exact component={EventsOne} />
           <Route path="/events/events2" exact component={EventsTwo} />
           <Route path="/support" exact component={Support} />
+          <Route path="/section" exact component={SectionList} />
         </Switch>
       </Home>
     </Router>

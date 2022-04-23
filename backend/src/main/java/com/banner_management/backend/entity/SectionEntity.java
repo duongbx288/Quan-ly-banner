@@ -15,9 +15,13 @@ public class SectionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "position")
+    @Column(name = "position_x")
     @NotNull
-    private String position;
+    private String position_x;
+
+    @Column(name = "position_y")
+    @NotNull
+    private String position_y;
 
     @Column(name = "position_web")
     @NotNull
@@ -46,12 +50,20 @@ public class SectionEntity {
         this.id = id;
     }
 
-    public String getPosition() {
-        return position;
+    public String getPosition_x() {
+        return position_x;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setPosition_x(String position_x) {
+        this.position_x = position_x;
+    }
+
+    public String getPosition_y() {
+        return position_y;
+    }
+
+    public void setPosition_y(String position_y) {
+        this.position_y = position_y;
     }
 
     public String getPositionWeb() {
@@ -90,7 +102,8 @@ public class SectionEntity {
     public String toString() {
         return "SectionEntity{" +
                 "id=" + id +
-                ", position='" + position + '\'' +
+                ", position_x='" + position_x + '\'' +
+                ", position_y='" + position_y + '\'' +
                 ", positionWeb='" + positionWeb + '\'' +
                 ", height=" + height +
                 ", width=" + width +
