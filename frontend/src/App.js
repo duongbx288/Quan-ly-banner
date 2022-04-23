@@ -15,9 +15,12 @@ import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
 import Layout from './components/dashboard/Layout';
-
+import { CheckboxProvider } from './context/CheckboxContext';
+import { CheckboxArrProvider } from './context/CheckboxListContext'
 function App({ userInfo }) {
   return (
+    <CheckboxProvider>
+    <CheckboxArrProvider>
     <Router>
       <Home>
         <Layout>
@@ -33,6 +36,8 @@ function App({ userInfo }) {
         </Layout>
       </Home>
     </Router>
+    </CheckboxArrProvider>
+    </CheckboxProvider>
   );
 }
 export const Home = styled.div`

@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import PaginateList from "../PaginateList";
 
 import '../../styles/banner/ListBannerChoice.css';
+import { CheckboxContext } from "../../context/CheckboxContext";
+import BannerStatus from "./BannerStatus";
 const BASE_URL = "http://localhost:8080/api/banners/page/";
 
 const ListBannerChoice = (props) => {
     const [bannerList, setBannerList] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
-    const [checkedBox, setCheckedBox] = useState(false)
-    // Ở đây dữ liệu nhận được từ API call đã được phân theo trang sẵn ở phần backend, chỉ cần lấy thông tin số trang
-    // và trang hiện tại từ dữ liệu nhận về là được
 
     useEffect(() => {
         axios.get(BASE_URL + currentPage).then((response) => {
-
             // Lấy thông tin banner
             const data = response.data.content;
             // Lấy thông tin tổng số trang 
@@ -25,25 +23,6 @@ const ListBannerChoice = (props) => {
         });
     }, [currentPage]);
 
-    let clickedNumber = props.data;
-    const handleClickBox = (e, id) => {
-        console.log("click number :", clickedNumber)
-        console.log("index: ", id);
-
-        if (document.getElementById(id).checked === true) {
-
-            clickedNumber -= 1;
-            console.log("check lại click number:", clickedNumber)
-        }
-        else {
-            document.getElementById(id).checked = false;
-            clickedNumber += 1;
-        }
-
-        // console.log("check : ", check)
-
-
-    }
     return (
         <div className="banner-list-choice-container">
 
@@ -59,27 +38,28 @@ const ListBannerChoice = (props) => {
                 </thead>
                 <tbody>
                     {
-                        bannerList.map((item, index) =>
-                            <tr className="item" key={item.id} >
-                                <th className="text-center code" >{item.code}</th>
-                                <td className="text-center name" >{item.name}</td>
-                                <td className="text-center image" >
-                                    <img src="https://mdbootstrap.com/img/new/slides/041.webp" width={300} height={80} />
-                                </td>
-                                <td className="text-center ">
-                                    <input className="form-control text-center" type="text"
-                                        placeholder="Ví dụ: 10"
-                                    />
-                                </td>
-                                <td className="text-center checkbox">
-                                    <input type="checkbox" style={{ transform: "scale(1.5)" }}
-                                        id={item.id}
+                        bannerList.map((item, index) => 
+                            <BannerStatus key={item.id} item={item}/>
+                            // <tr className="item" key={item.id} >
+                            //     <th className="text-center code" >{item.code}</th>
+                            //     <td className="text-center name" >{item.name}</td>
+                            //     <td className="text-center image" >
+                            //         <img src="https://mdbootstrap.com/img/new/slides/041.webp" width={300} height={80} />
+                            //     </td>
+                            //     <td className="text-center ">
+                            //         <input className="form-control text-center" type="text"
+                            //             placeholder="Ví dụ: 10"
+                            //         />
+                            //     </td>
+                            //     <td className="text-center checkbox">
+                            //         <input type="checkbox" style={{ transform: "scale(1.5)" }}
+                            //             id={item.id}
 
-                                        onChange={(e) => handleClickBox(e, item.id)}
-                                    />
+                            //             onChange={(e) => handleClickBox(e, item.id)}
+                            //         />
 
-                                </td>
-                            </tr>
+                            //     </td>
+                            // </tr>
                         )
                     }
                 </tbody>
