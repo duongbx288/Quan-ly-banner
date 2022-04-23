@@ -4,5 +4,9 @@ import com.banner_management.backend.entity.SectionEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface SectionRepository extends JpaRepository<SectionEntity, Integer> {
+
+    List<SectionEntity> findSectionEntitiesByPositionWeb(String position_web);
 }
