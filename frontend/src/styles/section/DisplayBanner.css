@@ -24,25 +24,23 @@
   font-size: 18px;
 }
 
-.display-banner-container .container .main-content .row .col-sm-6.left .form-group {
+.display-banner-container .container .main-content .row .col-sm-12 .form-group {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.display-banner-container .container .main-content .row .col-sm-6.left .form-group label {
+.display-banner-container .container .main-content .row .col-sm-12 .form-group label {
   line-height: 40px;
 }
 
-.display-banner-container .container .main-content .row .col-sm-6.right #imgFrame {
-  width: 500px;
-  height: 200px;
-  margin: 0 auto;
-  border: 1px dashed black;
+.display-banner-container .container .main-content #showListBannerChoice {
+  display: none;
 }
 
-.display-banner-container .container .main-content .row .col-sm-6.right .button {
-  margin-top: 100px;
+.display-banner-container .container .main-content .col-12 .button {
+  margin-top: 30px;
+  margin-bottom: 80px;
   margin-right: 40px;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -50,7 +48,7 @@
   float: right;
 }
 
-.display-banner-container .container .main-content .row .col-sm-6.right .button .btn-cancel {
+.display-banner-container .container .main-content .col-12 .button .btn-cancel {
   border: 1px solid #FF4D4D;
   background-color: white;
   color: #FF4D4D;
@@ -59,7 +57,7 @@
   margin-right: 30px;
 }
 
-.display-banner-container .container .main-content .row .col-sm-6.right .button .btn-add {
+.display-banner-container .container .main-content .col-12 .button .btn-add {
   border: 1px solid #0088FF;
   background-color: #0088FF;
   color: white;
