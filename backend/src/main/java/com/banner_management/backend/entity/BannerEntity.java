@@ -3,7 +3,7 @@ package com.banner_management.backend.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Table(name = "banners")
 @Entity
@@ -31,9 +31,8 @@ public class BannerEntity {
     @Column(name = "state")
     private short state;
 
-    @Column(name = "expired", nullable = false)
-    @NotNull
-    private Date expired;
+    @Column(name = "expired")
+    private Timestamp expired;
 
     @Column(name = "user_add", nullable = false)
     @NotNull
@@ -44,10 +43,10 @@ public class BannerEntity {
 
     @Column(name = "create_at", nullable = false)
     @NotNull
-    private Date createAt;
+    private Timestamp createAt;
 
     @Column(name = "modified_at")
-    private Date modifiedAt;
+    private Timestamp modifiedAt;
 
     public BannerEntity() {
     }
@@ -134,27 +133,27 @@ public class BannerEntity {
         this.state = state;
     }
 
-    public Date getExpired() {
+    public Timestamp getExpired() {
         return expired;
     }
 
-    public void setExpired(Date expired) {
+    public void setExpired(Timestamp expired) {
         this.expired = expired;
     }
 
-    public Date getCreateAt() {
+    public Timestamp getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Date createAt) {
+    public void setCreateAt(Timestamp createAt) {
         this.createAt = createAt;
     }
 
-    public Date getModifiedAt() {
+    public Timestamp getModifiedAt() {
         return modifiedAt;
     }
 
-    public void setModifiedAt(Date modifiedAt) {
+    public void setModifiedAt(Timestamp modifiedAt) {
         this.modifiedAt = modifiedAt;
     }
 

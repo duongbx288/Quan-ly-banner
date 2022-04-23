@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import BannerInfo from "./BannerInfo";
-import "../../styles/banner/bannerList.css";
+import "../../styles/banner/BannerList.css";
 import axios from "axios";
 import PaginateList from "../PaginateList";
 
