@@ -18,6 +18,34 @@ export const SidebarData = [
         iconOpened: <BiIcons.BiChevronDown size={24} />
     },
     {
+        title: "Quản lý khu vực",
+        path: "/section/manage",
+        icon: <BiIcons.BiCollection size={24} />,
+        iconClosed: <BiIcons.BiChevronRight size={24} />,
+        iconOpened: <BiIcons.BiChevronDown size={24} />,
+
+        subNav: [
+            {
+                title: "Sapo Web",
+                path: "/section/SapoWeb",
+                icon: <AiIcons.AiOutlineGlobal size={24} />,
+                cName: "sub-nav",
+            },
+            {
+                title: "Sapo Omni",
+                path: "/section/SapoOmni",
+                icon: <MdIcons.MdManageSearch size={24} />,
+                cName: "sub-nav",
+            },
+            {
+                title: "Sapo FnB",
+                path: "/section/SapoFnB",
+                icon: <BiIcons.BiFoodMenu size={24} />,
+                cName: "sub-nav",
+            }
+        ]
+    },
+    {
         title: "Quản lý banner",
         path: "/banner/manage",
         icon: <MdIcons.MdPictureInPicture size={24} />,
@@ -36,11 +64,6 @@ export const SidebarData = [
                 path: "/banner/update/",
                 icon: <MdIcons.MdUpdate size={24} />,
                 cName: "sub-nav",
-            },
-            {
-                title: "Xóa banner",
-                path: "/banner/delete",
-                icon: <MdIcons.MdDelete size={24} />,
             },
             {
                 title: "Xóa banner",

@@ -14,28 +14,25 @@ import Support from "./pages/Support";
 import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
+import Layout from './components/dashboard/Layout';
+import SectionList from './components/section/SectionList';
 
 function App({ userInfo }) {
   return (
     <Router>
       <Home>
-        <Sidebar />
-        <Switch>
-          <Route path="/about-us" exact component={AboutUs} />
-          <Route path="/about-us/aim" exact component={OurAim} />
-          <Route path="/about-us/vision" exact component={OurVision} />
-          <Route path="/services" exact component={Services} />
-          <Route path="/banner/manage" exact component={BannerManage} />
-          <Route path="/banner/create" exact component={CreateBanner} />
-          <Route path="/banner/update/:code" exact component={UpdateBanner} />
-          <Route path="/banner/update" exact component={UpdateBanner} />
-          <Route path="/banner/delete" exact component={DisplayBanner} />
-          <Route path="/contact" exact component={Contact} />
-          <Route path="/events" exact component={Events} />
-          <Route path="/events/events1" exact component={EventsOne} />
-          <Route path="/events/events2" exact component={EventsTwo} />
-          <Route path="/support" exact component={Support} />
-        </Switch>
+        <Layout>
+          <Switch>
+            <Route path="/about-us" exact component={AboutUs} />
+            <Route path="/banner/manage" exact component={BannerManage} />
+            <Route path="/banner/create" exact component={CreateBanner} />
+            <Route path="/banner/update/:code" exact component={UpdateBanner} />
+            <Route path="/banner/update" exact component={UpdateBanner} />
+            <Route path="/banner/delete" exact component={DisplayBanner} />
+            <Route path="/contact" exact component={Contact} />
+            <Route path="/section" exact component={SectionList} />
+          </Switch>
+        </Layout>
       </Home>
     </Router>
   );

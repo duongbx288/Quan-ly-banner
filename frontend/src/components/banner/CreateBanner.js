@@ -29,31 +29,19 @@ function CreateBanner(props) {
     const saveBanner = (e) => {
         e.preventDefault();
         let d = new Date();
-        let year = d.getFullYear();
-        let month = d.getMonth() + 1;
-        if (month < 10) {
-            month = '0' + month;
-        }
-        console.log(month);
-        let day = d.getDate();
-
 
         let state = 0;
         let userAdd = "Luong Van Minh";
-        let createAt = year + "-" + month + "-" + day;
         let sectionID = 1;
-        let id = 5;
 
         let bannerItem = {
-            id: id,
             sectionID: sectionID,
             code: bannerID,
             name: name,
             imgUrl: imgName,
             state: state,
-            expired: expired,
             userAdd: userAdd,
-            createAt: createAt
+            createAt: d
         }
         console.log('banner => ', bannerItem);
 
@@ -94,12 +82,6 @@ function CreateBanner(props) {
                                     <input className="form-control" type="text" id="name" name="name"
                                         placeholder="ex: quảng cáo cá tháng tư"
                                         value={name} onChange={(e) => setName(e.target.value)} />
-                                </div>
-
-                                <div className="mt-3 form-group">
-                                    <label htmlFor="expired">Ngày hết hạn banner</label>
-                                    <input className="form-control" type="date" id="expired" name="expired"
-                                        value={expired} onChange={(e) => setExpired(e.target.value)} />
                                 </div>
 
                                 <div className="mt-3 form-group">
