@@ -28,7 +28,10 @@ function SectionList() {
 
     const displaySections = sections.map(
     (data) => {
-        return <Section id={data.id}/>
+        console.log("data",data);
+        return (
+            <Section id={data.id}/>
+        )
     }
     )
     if (error) {

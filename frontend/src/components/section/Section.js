@@ -10,6 +10,7 @@ function Section(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [section, setSection] = useState([]);
     id = props.id;
+    console.log("id", id)
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/SapoFnB/sections/${id}`)
@@ -30,8 +31,11 @@ function Section(props) {
     }, [])
 
     const mystyle = {
-        height: '100%',
-        width: '100%',
+        position: 'absolute',
+        left: section.position_x,
+        top: section.position_y,
+        width: section.width,
+        height: section.height,
         display: section.display,
         border: '1px solid'
     }
@@ -41,9 +45,10 @@ function Section(props) {
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {
+        console.log("section:",section)
         return (
             <div>
-            <Rnd
+            {/* <Rnd
             default={{
                 x: section.position_x,
                 y: section.position_y,
@@ -53,13 +58,14 @@ function Section(props) {
               minWidth={20}
               minHeight={20}
               bounds="window"
-            >
+            > */}
                 <div className="section" style={mystyle}>
                     <h1>Section: {section.id}</h1>
                 </div>
-            </Rnd>
+            {/* </Rnd> */}
             </div>
-        )
+        )  
+       
     }   
 }
 
