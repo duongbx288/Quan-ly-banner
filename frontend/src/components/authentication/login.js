@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import './Login.css'
 
-import AuthService from "../services/auth";
+import AuthService from "../../services/auth";
 
 const required = value => {
   if (!value) {
@@ -55,7 +56,7 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
-          this.props.history.push("/profile");
+          this.props.history.push("/home");
           window.location.reload();
         },
         error => {
@@ -81,70 +82,76 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-
-          <Form
-            onSubmit={this.handleLogin}
-            ref={c => {
-              this.form = c;
-            }}
-          >
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <Input
-                type="text"
-                className="form-control"
-                name="username"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                validations={[required]}
+      <div className="wrap d-flex justify-content-center py-5">
+        <div className="login">
+          <div className="p-5 d-flex flex-column">
+            <div className="d-flex justify-content-center">
+              <img
+                src={require('../Logo.png')}
+                alt="Sapo"
+                className="profile-img-card w-100 mb-3"
               />
             </div>
+            <h1>Trang quản lý banner</h1>
+				    <h5>Đăng nhập vào tài khoản của bạn</h5>
 
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <Input
-                type="password"
-                className="form-control"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                validations={[required]}
-              />
-            </div>
-
-            <div className="form-group">
-              <button
-                className="btn btn-primary btn-block"
-                disabled={this.state.loading}
-              >
-                {this.state.loading && (
-                  <span className="spinner-border spinner-border-sm"></span>
-                )}
-                <span>Login</span>
-              </button>
-            </div>
-
-            {this.state.message && (
-              <div className="form-group">
-                <div className="alert alert-danger" role="alert">
-                  {this.state.message}
-                </div>
-              </div>
-            )}
-            <CheckButton
-              style={{ display: "none" }}
+            <Form
+              onSubmit={this.handleLogin}
               ref={c => {
-                this.checkBtn = c;
+                this.form = c;
               }}
-            />
-          </Form>
+            >
+              <div className="form-group my-2">
+                <label className="mb-1" htmlFor="username">Username</label>
+                <Input
+                  type="text"
+                  className="form-control mb-4"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.onChangeUsername}
+                  validations={[required]}
+                />
+              </div>
+
+              <div className="form-group my-2">
+                <label className="mb-1" htmlFor="password">Password</label>
+                <Input
+                  type="password"
+                  className="form-control mb-4"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.onChangePassword}
+                  validations={[required]}
+                />
+              </div>
+
+              <div className="form-group d-flex justify-content-center">
+                <button
+                  className="btn btn-primary btn-block"
+                  disabled={this.state.loading}
+                >
+                  {this.state.loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                  <span>Login</span>
+                </button>
+              </div>
+
+              {this.state.message && (
+                <div className="form-group">
+                  <div className="alert alert-danger" role="alert">
+                    {this.state.message}
+                  </div>
+                </div>
+              )}
+              <CheckButton
+                style={{ display: "none" }}
+                ref={c => {
+                  this.checkBtn = c;
+                }}
+              />
+            </Form>
+          </div>
         </div>
       </div>
     );

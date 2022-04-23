@@ -3,19 +3,21 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as BiIcons from "react-icons/bi";
 import * as MdIcons from "react-icons/md";
-import * as GrIcons from "react-icons/gr";
-export const SidebarData = [
-    {
-        title: "Tổng quan",
-        path: "/home",
-        icon: <AiIcons.AiOutlineHome size={24} />
-    },
+export const SidebarDataAdmin = [
     {
         title: "Quản lý người dùng",
         path: "/user-manage",
         icon: <BiIcons.BiUser size={24} />,
         iconClosed: <BiIcons.BiChevronRight size={24} />,
         iconOpened: <BiIcons.BiChevronDown size={24} />
+    }
+];
+
+export const SidebarDataUser = [
+    {
+        title: "Tổng quan",
+        path: "/home",
+        icon: <AiIcons.AiOutlineHome size={24} />
     },
     {
         title: "Quản lý banner",
@@ -46,7 +48,7 @@ export const SidebarData = [
     },
     {
         title: "Báo cáo",
-        path: "/contact",
+        path: "/report",
         icon: <IoIcons.IoIosStats size={24} />,
     }
 ];
