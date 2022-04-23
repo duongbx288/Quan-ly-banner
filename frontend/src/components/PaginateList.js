@@ -1,6 +1,6 @@
 import { Pagination } from "react-bootstrap";
 import { useState } from "react";
-import "../styles/PaginateList.css";
+import "../styles/paginateList.css";
 
 const PaginateList = ({ currentPage, setCurrentPage, pageNumber }) => {
   let items = [];
@@ -9,7 +9,7 @@ const PaginateList = ({ currentPage, setCurrentPage, pageNumber }) => {
 
   const changePage = (e) => {
     // any suggestion better than using e.target.textContent ?
-    
+
     // isNan() is used to check if user clicks the same page number in the pagination component
     if (isNaN(e.target.textContent)) {
     } else {
