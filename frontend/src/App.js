@@ -15,6 +15,7 @@ import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
 import Layout from './components/dashboard/Layout';
+import SectionList from './components/section/SectionList';
 
 function App({ userInfo }) {
   return (
@@ -29,6 +30,7 @@ function App({ userInfo }) {
             <Route path="/banner/update" exact component={UpdateBanner} />
             <Route path="/banner/delete" exact component={DisplayBanner} />
             <Route path="/contact" exact component={Contact} />
+            <Route path="/section" exact component={SectionList} />
           </Switch>
         </Layout>
       </Home>
