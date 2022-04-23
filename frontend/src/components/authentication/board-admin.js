@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-import UserService from "../services/user";
-import EventBus from "../common/EventBus";
+import UserService from "../../services/user";
+import EventBus from "../../common/EventBus";
+import Layout from "../dashboard/Layout";
 
 export default class BoardAdmin extends Component {
   constructor(props) {
@@ -38,11 +39,11 @@ export default class BoardAdmin extends Component {
 
   render() {
     return (
-      <div className="container">
+      <Layout>
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
         </header>
-      </div>
+      </Layout>
     );
   }
 }
