@@ -22,7 +22,7 @@ function App({ userInfo }) {
   return (
     <Router>
       <Home>
-        {/* <Sidebar /> */}
+        <Sidebar />
         <Switch>
           <Route path="/about-us" exact component={AboutUs} />
           <Route path="/about-us/aim" exact component={OurAim} />
