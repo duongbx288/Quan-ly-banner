@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PaginateList from "../PaginateList";
 
-import '../../styles/banner/ListBannerChoice.css';
+//import '../../styles/banner/ListBannerChoice.css';
 const BASE_URL = "http://localhost:8080/api/banners/page/";
 
 const ListBannerChoice = (props) => {
