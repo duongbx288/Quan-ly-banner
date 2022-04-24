@@ -16,6 +16,7 @@ import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
 import Layout from './components/dashboard/Layout';
 import SectionList from './components/section/SectionList';
+import SapoWeb from './dashboard/SapoWeb';
 
 function App({ userInfo }) {
   return (
@@ -31,6 +32,7 @@ function App({ userInfo }) {
             <Route path="/banner/delete" exact component={DisplayBanner} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/section" exact component={SectionList} />
+            <Route path="/section/SapoWeb" exact component={SapoWeb} />
           </Switch>
         </Layout>
       </Home>

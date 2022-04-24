@@ -12,7 +12,7 @@ function CreateBanner(props) {
     const [imgUrl, setImgUrl] = useState('');
     const [imgName, setImgName] = useState('');
 
-    const inputEl = useRef(null); // biến để giới thiệu đầu vào ẩn
+    const inputEl = (null); // biến để giới thiệu đầu vào ẩn
     const getImage = (e) => {
 
 

@@ -18,9 +18,13 @@ img{
 
 .banner-info {
     font-size: 14px;
-    border: 1px solid black;
-    margin: 5px;
-    padding: 5px;
+    border: 1px solid #bfbebe;
+    margin: 20px;
+    padding: 10px;
+    width: 1050px;
+    margin-left: 80px;
+    border-radius: 10px;
+    height: 150px;
 }
 
 
@@ -45,17 +49,17 @@ img{
 
 .banner-info img{
     height: 100px;
-    min-height: 50px;
+    min-height: 120px;
     width: 100%;
     min-width: 100px;
     object-fit:fill;
+    
 }
 
 .banner-info .button-choice button{
     padding: 2px;
     border: none;
-    margin: 4px;
-    width: 50px;
+    margin: 15px;
+    width: 100px;
 }
-
 

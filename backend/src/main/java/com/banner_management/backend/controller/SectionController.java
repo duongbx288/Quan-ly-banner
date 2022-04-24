@@ -21,7 +21,7 @@ public class SectionController {
     }
 
     @GetMapping("/{position_web}/sections/{id}")
-    public SectionEntity getSectionById(@PathVariable("position_web") String position_web, @PathVariable("id") int id) {
+    public SectionEntity getSectionById( @PathVariable("id") int id,@PathVariable("position_web") String position_web) {
         return sectionService.getSectionById(id);
     }
 

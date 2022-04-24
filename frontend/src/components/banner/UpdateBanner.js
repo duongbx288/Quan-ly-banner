@@ -4,6 +4,7 @@ import BannerService from "../../services/BannerService";
 import * as BiIcons from "react-icons/bi";
 import { useLocation } from "react-router-dom";
 
+
 function UpdateBanner(props) {
 
     // Vấn đề: Access link trực tiếp thì sẽ không có id

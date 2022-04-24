@@ -15,13 +15,16 @@ public class SectionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "position")
-    @NotNull
-    private String position;
-
     @Column(name = "position_web")
     @NotNull
-    private String positionWeb;
+    private  String position_web;
+
+    @Column(name = "position_x")
+    @NotNull
+    private int position_x;
+    @Column(name = "position_y")
+    @NotNull
+    private int position_y;
 
     @Column(name = "height")
     @NotNull
@@ -46,21 +49,7 @@ public class SectionEntity {
         this.id = id;
     }
 
-    public String getPosition() {
-        return position;
-    }
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public String getPositionWeb() {
-        return positionWeb;
-    }
-
-    public void setPositionWeb(String positionWeb) {
-        this.positionWeb = positionWeb;
-    }
 
     public int getHeight() {
         return height;
@@ -86,15 +75,44 @@ public class SectionEntity {
         this.display = display;
     }
 
+    public String getPosition_web() {
+        return position_web;
+    }
+
+    public void setPosition_web(String position_web) {
+        this.position_web = position_web;
+    }
+
+    public int getPosition_x() {
+        return position_x;
+    }
+
+    public void setPosition_x(int position_x) {
+        this.position_x = position_x;
+    }
+
+    public int getPosition_y() {
+        return position_y;
+    }
+
+    public void setPosition_y(int position_y) {
+        this.position_y = position_y;
+    }
+
+
+
+
+
     @Override
     public String toString() {
         return "SectionEntity{" +
                 "id=" + id +
-                ", position='" + position + '\'' +
-                ", positionWeb='" + positionWeb + '\'' +
+                ", position_web='" + position_web + '\'' +
+                ", position_y=" + position_y +
                 ", height=" + height +
                 ", width=" + width +
                 ", display='" + display + '\'' +
+                ", position_x=" + position_x +
                 '}';
     }
 }

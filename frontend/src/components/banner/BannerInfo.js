@@ -1,7 +1,7 @@
 import "../../styles/banner/BannerInfo.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const BASE_URL = "http://localhost:8080/api/banners/";
@@ -24,10 +24,17 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
       axios
         .delete(BASE_URL + bannerInfo.id)
         .then(() => console.log("Delete successful"));
-        //bannerList.filter(info => info.id === bannerInfo.id);
-        setBannerList(bannerList.filter(info => info.id !== bannerInfo.id));
+      //bannerList.filter(info => info.id === bannerInfo.id);
+      setBannerList(bannerList.filter(info => info.id !== bannerInfo.id));
     }
   };
+
+  const [show, setShow] = useState(true);
+
+  const handleShowInfo = (bannerInfo) => {
+
+    alert("thong tin:", bannerInfo.code)
+  }
 
 
   const updateBanner = () => {
@@ -38,60 +45,61 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
     <div className="banner-info">
       <Container>
         <Row>
-          <Col xs={12} lg={5}>
+          <Col xs={4} lg={4}>
             <Row>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
-                <p>Id</p>
-                <p>{bannerInfo.code}</p>
-              </Col>
               <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
                 <p>Name</p>
                 <p>{bannerInfo.name}</p>
               </Col>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
-                <p>State</p>
-                <p>{bannerInfo.state}</p>
+              <Col xs={6} md={4} lg={4} xl={4} className="detail-show">
+                <button onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
               </Col>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
-                <p>Created at</p>
-                <p>
-                  {bannerInfo.createAt}
-                </p>
-              </Col>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
-                <p>Expired at</p>
-                <p>
-                  {bannerInfo.expired !== null &&
-                  bannerInfo.expired !== undefined
-                    ? bannerInfo.expired
-                    : "____-__-__"}
-                </p>
-              </Col>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
-                <p>Modified at</p>
-                <p>
-                  {bannerInfo.modifiedAt !== null &&
-                  bannerInfo.modifiedAt !== undefined
-                    ? bannerInfo.modifiedAt
-                    : "____-__-__"}
-                </p>
-              </Col>
+            </Row>
+            <Row>
+
             </Row>
           </Col>
           <Col lg={7}>
             <Row>
-              <Col xs={12} md={10} lg={10} xl={9} className="image-container">
+              <Col xs={6} md={10} lg={10} xl={9} className="image-container">
                 <Image src="https://mdbootstrap.com/img/new/slides/041.webp" />
               </Col>
               <Col xs={3} md={3} lg={3} xl={2} className="button-choice">
-                <button><Link to={updatePage}>Update</Link></button>
-                <button onClick={deleteConfirmation}>Delete</button>
+                <button type="button" className="btn btn-secondary"><Link to={updatePage}>Update</Link></button>
+                <button type="button" className="btn btn-danger" onClick={deleteConfirmation}>Delete</button>
               </Col>
             </Row>
           </Col>
         </Row>
-      </Container>
-    </div>
+      </Container >
+    </div >
+    // <div>
+    //   <Container>
+    //     <table className="table table-striped">
+    //       {/* <thead>
+    //         <tr>
+    //           <th scope="col">Id</th>
+    //           <th scope="col">Tên banner</th>
+    //           <th scope="col"> HÌnh ảnh Banner</th>
+    //           <th scope="col"></th>
+    //         </tr>
+    //       </thead> */}
+    //       <tbody>
+    //         <tr>
+    //           <th scope="row">1</th>
+    //           <td className="name">{bannerInfo.name}</td>
+    //           <td className="img"><Image src="https://mdbootstrap.com/img/new/slides/041.webp" /></td>
+    //           <td>
+    //             <button><Link to={updatePage}>Update</Link></button>
+    //             <button onClick={deleteConfirmation}>Delete</button>
+
+    //           </td>
+    //         </tr>
+
+    //       </tbody>
+    //     </table>
+    //   </Container>
+    // </div>
   );
 };
 
