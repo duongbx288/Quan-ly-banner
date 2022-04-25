@@ -14,7 +14,7 @@ import Layout from './components/dashboard/Layout';
 import AuthService from "./services/auth";
 import EventBus from "./common/EventBus";
 import Login from "./components/authentication/Login";
-import Home from "./components/Home";
+import Home from "./components/authentication/Home";
 import Profile from './components/authentication/Profile';
 import BoardUser from './components/authentication/board-user';
 import BoardAdmin from './components/authentication/board-admin';
