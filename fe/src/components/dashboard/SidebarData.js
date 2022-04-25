@@ -13,7 +13,7 @@ export const SidebarDataAdmin = [
     }
 ];
 
-export const SidebarDataUser = [
+export const SidebarData = [
     {
         title: "Tổng quan",
         path: "/home",

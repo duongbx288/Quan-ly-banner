@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { SidebarDataUser, SidebarDataAdmin } from "./SidebarData";
+import { SidebarData, SidebarDataAdmin } from "./SidebarData";
 import { SidebarLink, SidebarLabel} from "./SubMenu"
 import SubMenu from "./SubMenu.js";
 import Logo from '../Logo.png';
@@ -30,13 +30,7 @@ const SideBarHead = styled.div`
 
 
 export default function Sidebar(props) {
-  // let AdminTab;
-  // if (props.roles = "ROLE_ADMIN")
-  // {
-  //   AdminTab = SidebarDataAdmin.map((item, index) => {
-  //     return <SubMenu item={item} key={index}/>;
-  //   }
-  // )}
+
   return (
     <>
       <SidebarNav>
@@ -46,11 +40,14 @@ export default function Sidebar(props) {
 
         <SidebarWrap>
           {
-            SidebarDataUser.map((item, index) => {
+            SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index}/>;
             })
           }
           {/* {AdminTab} */}
+          {props.showAdminBoard && SidebarDataAdmin.map((item, index) => {
+              return <SubMenu item={item} key={index}/>;
+            })}
           <SidebarLink to={"/login"} onClick={props.logOut}>
             <MdLogout size={24}/>
             <SidebarLabel className="l-0">Đăng xuất</SidebarLabel>

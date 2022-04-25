@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Switch, Route, Link } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import styled from "styled-components";
 
 import Contact from "./pages/ContactUs";
 import BannerManage from "./pages/BannerManage";
@@ -48,8 +47,9 @@ const App = () => {
 
   return (
     <div className='wrapper'>
+
       {currentUser ? (
-        <Layout logOut={logOut}>
+        <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
           <Switch>
             <Route exact path={["/", "/home"]}>
               <Home/>

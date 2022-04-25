@@ -15,7 +15,7 @@ const Layout = React.memo((props) => {
   return (
     <div className="d-flex ">
       <Sidebar 
-        // roles={props.roles}
+        showAdminBoard={props.showAdminBoard}
         logOut={props.logOut}
       />
       <Wrapper>
