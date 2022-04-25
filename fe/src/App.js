@@ -47,13 +47,14 @@ const App = () => {
 
   return (
     <div className='wrapper'>
+      <Link to={"/"}></Link>
       {currentUser ? (
         <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
           <Switch>
             <Route exact path={["/", "/home"]}>
               <Home/>
             </Route>
-            <Route exact path="/profile">
+            <Route path="/profile">
               <Profile/>
             </Route>
             <Route path="/user">
@@ -69,7 +70,7 @@ const App = () => {
               <CreateBanner showAdminBoard={showAdminBoard}/>
             </Route>
             <Route path="/banner/update/:code">
-              <UpdateBanner/>
+              <UpdateBanner showAdminBoard={showAdminBoard}/>
             </Route>
             <Route path="/banner/update">
               <UpdateBanner/>
