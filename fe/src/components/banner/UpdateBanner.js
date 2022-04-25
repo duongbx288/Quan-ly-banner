@@ -80,10 +80,11 @@ function UpdateBanner(props) {
     return (
 
         <div className="update-banner-container" >
-            <div className="top bg-success text-white">Admin</div>
             <div className="container">
                 <div className="header-top">
-                    <p className="mt-4 text-left"> Admin <BiIcons.BiChevronRight size={20} /> Quản lý banner <BiIcons.BiChevronRight size={20} /> Thêm banner</p>
+                    <p className="mt-3 text-left">
+                    {props.showAdminBoard ?(<span>Admin</span>) : (<span>User</span>)} 
+                    <BiIcons.BiChevronRight size={20} /> Quản lý banner <BiIcons.BiChevronRight size={20} /> Thêm banner</p>
                 </div>
                 <hr></hr>
                 <div className="main-content">

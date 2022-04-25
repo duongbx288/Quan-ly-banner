@@ -1,14 +1,15 @@
 .banner-list{
-    height: 100vh;
-    width: calc(100vw - 240px);
+    /* width: calc(100vw - 240px); */
+    width: 99%;
+    height: 90vh;
 }
 
 .banner-list .list{
-    border: 5px solid #c2bcbc;
+    border: 2px solid black;
     margin: 5px;
     height: 90%;
     overflow-y: scroll;
     width: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 

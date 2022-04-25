@@ -47,7 +47,6 @@ const App = () => {
 
   return (
     <div className='wrapper'>
-
       {currentUser ? (
         <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
           <Switch>
@@ -67,7 +66,7 @@ const App = () => {
               <BannerManage/>
             </Route>
             <Route path="/banner/create" >
-              <CreateBanner/>
+              <CreateBanner showAdminBoard={showAdminBoard}/>
             </Route>
             <Route path="/banner/update/:code">
               <UpdateBanner/>

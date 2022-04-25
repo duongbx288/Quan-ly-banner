@@ -22,8 +22,9 @@ const Home = () => {
 
   return (
     <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
+      <header className="jumbotron m-3">
+        {/* <h3>{content}</h3> */}
+        Trang đưa thông tin về các banners sử dụng trên các ứng dụng của SAPO
       </header>
     </div>
   );

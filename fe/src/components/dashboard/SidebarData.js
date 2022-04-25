@@ -5,6 +5,11 @@ import * as BiIcons from "react-icons/bi";
 import * as MdIcons from "react-icons/md";
 export const SidebarDataAdmin = [
     {
+        title: "Báo cáo",
+        path: "/report",
+        icon: <IoIcons.IoIosStats size={24} />,
+    },
+    {
         title: "Quản lý người dùng",
         path: "/user-manage",
         icon: <BiIcons.BiUser size={24} />,
@@ -73,10 +78,5 @@ export const SidebarData = [
                 icon: <MdIcons.MdDelete size={24} />,
             },
         ]
-    },
-    {
-        title: "Báo cáo",
-        path: "/report",
-        icon: <IoIcons.IoIosStats size={24} />,
     }
 ];

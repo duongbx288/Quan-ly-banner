@@ -16,7 +16,11 @@ export default function NavBar(props) {
   return (
     <>
       <NavWrap>
-        Admin
+        {props.showAdminBoard ? (
+          <h1 className="mt-1">Admin</h1>
+        ):(
+          <h1 className="mt-1">User</h1>
+        )}
       </NavWrap>
     </>
   );
