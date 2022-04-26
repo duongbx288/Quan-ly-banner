@@ -30,6 +30,7 @@ img{
 
 .detail-info p{
     margin: 0;
+    text-decoration: none;
 }
 
 .detail-info hr{
@@ -61,5 +62,10 @@ img{
     border: none;
     margin: 15px;
     width: 100px;
+}
+.button{
+   
+        text-decoration: none;
+    
 }
 

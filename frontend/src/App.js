@@ -3,7 +3,8 @@ import { Switch, Route, Link } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import './App.css';
-
+import { CheckboxProvider } from './context/CheckboxContext';
+import { CheckboxArrProvider } from './context/CheckboxListContext'
 import Contact from "./pages/ContactUs";
 import BannerManage from "./pages/BannerManage";
 import CreateBanner from "./components/banner/CreateBanner";
@@ -18,6 +19,7 @@ import Home from "./components/authentication/Home";
 import Profile from './components/authentication/Profile';
 import BoardUser from './components/authentication/board-user';
 import BoardAdmin from './components/authentication/board-admin';
+import BannerDetail from './components/banner/BannerDetail';
 
 class App extends Component {
   constructor(props) {
@@ -36,10 +38,10 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        showAdminBoard: user.roles.includes("ROLE_ADMIN")
       });
     }
-    
+
     EventBus.on("logout", () => {
       this.logOut();
     });
@@ -60,25 +62,32 @@ class App extends Component {
   render() {
     const { currentUser, showAdminBoard } = this.state;
     return (
+
       <div className='wrapper'>
-         {currentUser ? (
-          <Layout logOut={this.logOut} roles={this.roles}>
-            <Switch>
-              <Route exact path={["/", "/home"]} component={Home} />
-              <Route exact path="/profile" component={Profile} />
-              <Route path="/user" component={BoardUser} />
-              <Route path="/admin" component={BoardAdmin} />
-              <Route path="/banner/manage" exact component={BannerManage} />
-              <Route path="/banner/create" exact component={CreateBanner} />
-              <Route path="/banner/update/:code" exact component={UpdateBanner} />
-              <Route path="/banner/update" exact component={UpdateBanner} />
-              <Route path="/banner/delete" exact component={DisplayBanner} />
-              <Route path="/report" exact component={Contact} />
-            </Switch> 
-          </Layout>
-        ):(
-          <Route exact path={["/", "/login"]} component={Login} />
-        )}
+        <CheckboxProvider>
+          <CheckboxArrProvider>
+            {currentUser ? (
+              <Layout logOut={this.logOut} roles={this.roles}>
+
+                <Switch>
+                  <Route exact path={["/", "/home"]} component={Home} />
+                  <Route exact path="/profile" component={Profile} />
+                  <Route path="/user" component={BoardUser} />
+                  <Route path="/admin" component={BoardAdmin} />
+                  <Route path="/banner/manage" exact component={BannerManage} />
+                  <Route path="/banner/create" exact component={CreateBanner} />
+                  <Route path="/banner/update/:code" exact component={UpdateBanner} />
+                  <Route path="/banner/update" exact component={UpdateBanner} />
+                  <Route path="/banner/delete" exact component={DisplayBanner} />
+                  <Route path="/banner/detail/:code" exact component={BannerDetail} />
+                  <Route path="/report" exact component={Contact} />
+                </Switch>
+              </Layout>
+            ) : (
+              <Route exact path={["/", "/login"]} component={Login} />
+            )}
+          </CheckboxArrProvider>
+        </CheckboxProvider>
 
         {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="navbar-nav mr-auto">
@@ -128,8 +137,10 @@ class App extends Component {
           <Route exact path="/profile" component={Profile} />
           <Route path="/user" component={BoardUser} />
           <Route path="/admin" component={BoardAdmin} />
-        </Switch>  */}
+        </Switch> */}
+
       </div>
+
     );
   }
 }

@@ -13,7 +13,7 @@ function Section(props) {
     console.log("id", id)
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/sapofnb/sections/${id}`)
+        fetch(`http://localhost:8081/api/sapofnb/sections/${id}`)
             .then(res => res.json())
             .then(
                 (section) => {

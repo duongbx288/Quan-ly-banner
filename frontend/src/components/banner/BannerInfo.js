@@ -17,6 +17,10 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
     pathname: "/banner/update/" + bannerInfo.code,
     detailInfo: detailInfo
   }
+  const bannerDetail = {
+    pathname: "/banner/detail/" + bannerInfo.code,
+    detailInfo: detailInfo
+  }
 
   const deleteConfirmation = () => {
     const confirm = window.confirm("Do you want to remove this banner?");
@@ -29,12 +33,9 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
     }
   };
 
-  const [show, setShow] = useState(true);
 
-  const handleShowInfo = (bannerInfo) => {
 
-    alert("thong tin:", bannerInfo.code)
-  }
+
 
 
   const updateBanner = () => {
@@ -52,7 +53,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
                 <p>{bannerInfo.name}</p>
               </Col>
               <Col xs={6} md={4} lg={4} xl={4} className="detail-show">
-                <button onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
+                <button type="button" className="btn btn-secondary" ><Link to={bannerDetail}>Show</Link></button>
               </Col>
             </Row>
             <Row>

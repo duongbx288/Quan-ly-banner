@@ -5,7 +5,7 @@ import "../../styles/banner/BannerList.css";
 import axios from "axios";
 import PaginateList from "../PaginateList";
 
-const BASE_URL = "http://localhost:8080/api/banners/page/";
+const BASE_URL = "http://localhost:8081/api/banners/page/";
 
 const BannerList = () => {
   const [bannerList, setBannerList] = useState([]);
@@ -13,7 +13,7 @@ const BannerList = () => {
   const [currentPage, setCurrentPage] = useState(0);
   // Ở đây dữ liệu nhận được từ API call đã được phân theo trang sẵn ở phần backend, chỉ cần lấy thông tin số trang
   // và trang hiện tại từ dữ liệu nhận về là được
-   
+
   useEffect(() => {
     axios.get(BASE_URL + currentPage).then((response) => {
 
@@ -23,13 +23,13 @@ const BannerList = () => {
       const pageNum = response.data.totalPages;
       setBannerList(data);
       setPageNumber(pageNum);
-    }); 
-  }, [currentPage]);   
+    });
+  }, [currentPage]);
 
   const displayBanner = bannerList.map((bannerInfo) => {
-    return <BannerInfo bannerInfo={bannerInfo} key={bannerInfo.id} bannerList={bannerList} setBannerList={setBannerList}/>;
+    return <BannerInfo bannerInfo={bannerInfo} key={bannerInfo.id} bannerList={bannerList} setBannerList={setBannerList} />;
   });
-  
+
   return (
     <div className="banner-list">
       <Container className="list">
@@ -39,7 +39,7 @@ const BannerList = () => {
           </Col>
         </Row>
       </Container>
-      <PaginateList currentPage={currentPage} setCurrentPage={setCurrentPage} pageNumber={pageNumber}/>
+      <PaginateList currentPage={currentPage} setCurrentPage={setCurrentPage} pageNumber={pageNumber} />
     </div>
   );
 };

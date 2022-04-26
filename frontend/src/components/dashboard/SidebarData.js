@@ -72,6 +72,7 @@ export const SidebarDataUser = [
                 path: "/banner/delete",
                 icon: <MdIcons.MdDelete size={24} />,
             },
+
         ]
     },
     {

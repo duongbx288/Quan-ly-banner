@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BANNER_API_BASE_URL = "http://localhost:8080/api/banners";
+const BANNER_API_BASE_URL = "http://localhost:8081/api/banners";
 class BannerService {
     // lay danh sach banner
     getListBanner() {

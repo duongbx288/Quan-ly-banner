@@ -5,7 +5,7 @@ import PaginateList from "../PaginateList";
 import '../../styles/banner/ListBannerChoice.css';
 import { CheckboxContext } from "../../context/CheckboxContext";
 import BannerStatus from "./BannerStatus";
-const BASE_URL = "http://localhost:8080/api/banners/page/";
+const BASE_URL = "http://localhost:8081/api/banners/page/";
 
 const ListBannerChoice = (props) => {
     const [bannerList, setBannerList] = useState([]);
@@ -38,8 +38,8 @@ const ListBannerChoice = (props) => {
                 </thead>
                 <tbody>
                     {
-                        bannerList.map((item, index) => 
-                            <BannerStatus key={item.id} item={item}/>
+                        bannerList.map((item, index) =>
+                            <BannerStatus key={item.id} item={item} />
                             // <tr className="item" key={item.id} >
                             //     <th className="text-center code" >{item.code}</th>
                             //     <td className="text-center name" >{item.name}</td>

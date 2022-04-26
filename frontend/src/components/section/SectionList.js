@@ -11,7 +11,7 @@ function SectionList(props) {
     position_web = props.position_web;
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/sapofnb/sections`)
+        fetch(`http://localhost:8081/api/sapofnb/sections`)
             .then(res => res.json())
             .then(
                 (sections) => {
