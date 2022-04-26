@@ -16,30 +16,25 @@ img{
     object-fit: cover;
 } */
 
+
 .banner-info {
     font-size: 14px;
     border: 1px solid #bfbebe;
-    margin: 20px;
     padding: 10px;
     width: 100%;
-    margin-left: 80px;
     border-radius: 10px;
     height: 150px;
 }
 
-
 .detail-info p{
-    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.detail-info label{
+    font-size: 24px;
+    font-weight: 500;
 }
 
-.detail-info hr{
-    margin: 0;
-    padding: 0;
-}
-
-.detail-info{
-    padding: 0;
-}
 
 .banner-info .image-container,
 .banner-info .button-choice{

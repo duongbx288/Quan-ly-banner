@@ -31,14 +31,14 @@ const BannerList = () => {
   });
   
   return (
-    <div className="banner-list">
-      <Container className="list">
+    <div className="banner-list m-2">
+      <div className="list">
         <Row>
           <Col sm={12} lg={10}>
             {displayBanner}
           </Col>
         </Row>
-      </Container>
+      </div>
       <PaginateList currentPage={currentPage} setCurrentPage={setCurrentPage} pageNumber={pageNumber}/>
     </div>
   );

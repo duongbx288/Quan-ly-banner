@@ -42,24 +42,24 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
   };
 
   return (
-    <div className="banner-info">
-      <Container>
+    <div className="banner-info m-4">
+      {/* <Container> */}
         <Row>
-          <Col xs={4} lg={4}>
+          <Col xs={6} lg={4}>
             <Row>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
-                <p>Name</p>
+              <Col xs={8} md={8} lg={6} xl={6} className="detail-info">
+                <label>NAME</label>
                 <p>{bannerInfo.name}</p>
               </Col>
-              <Col xs={6} md={4} lg={4} xl={4} className="detail-show">
-                <button onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
+              <Col xs={4} md={4} lg={6} xl={6} className="detail-show d-flex align-items-center">
+                <button className="btn btn-primary" onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
               </Col>
             </Row>
             <Row>
 
             </Row>
           </Col>
-          <Col lg={7}>
+          <Col xs={6} lg={8}>
             <Row>
               <Col xs={6} md={10} lg={10} xl={9} className="image-container">
                 <Image src="https://mdbootstrap.com/img/new/slides/041.webp" />
@@ -71,7 +71,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
             </Row>
           </Col>
         </Row>
-      </Container >
+      {/* </Container > */}
     </div >
     // <div>
     //   <Container>

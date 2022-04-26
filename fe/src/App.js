@@ -83,9 +83,6 @@ const App = () => {
                 <Route path="/banner/update">
                   <UpdateBanner showAdminBoard={showAdminBoard}/>
                 </Route>
-                <Route path="/banner/delete">
-                  <DisplayBanner/>
-                </Route>
                 <Route path="/banner/delete/:id">
                   <DisplayBanner/>
                 </Route>
