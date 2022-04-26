@@ -1,21 +1,18 @@
 package com.banner_management.backend.controller;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import com.banner_management.backend.dto.BannerDto;
 import com.banner_management.backend.entity.BannerEntity;
+import com.banner_management.backend.entity.BannerStatusEntity;
 import com.banner_management.backend.service.BannerService;
+import com.banner_management.backend.service.BannerStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -25,19 +22,14 @@ public class BannerController {
     @Autowired
     private BannerService bannerService;
 
+    @Autowired
+    private BannerStatusService bannerStatusService;
+
     // lấy danh sách các banner
     @GetMapping("/banners")
     public List<BannerEntity> listBanner() {
         return bannerService.listAllBanner();
     }
-
-    // lấy random banner theo số lượng và khu vực
-    @GetMapping("/banners/random/{sectionID}/{id}")
-    public List<BannerEntity> listRandomBanner(@PathVariable Integer sectionID, @PathVariable Integer id) {
-        return bannerService.listRandomBanner(sectionID, id);
-    }
-
-
 
     // lấy một banner theo id
     @GetMapping("/banners/{id}")
@@ -52,10 +44,17 @@ public class BannerController {
 
     // tạo mới một banner
     @PostMapping("/banners")
-    public ResponseEntity<BannerEntity> addBanner(@RequestBody BannerEntity bannerEntity){
+    public ResponseEntity<BannerEntity> addBanner(@RequestBody BannerDto bannerDto){
         try {
-            System.out.println(" alo " + bannerEntity);
+            System.out.println(" banner dto o day " + bannerDto);
+            BannerEntity bannerEntity = new BannerEntity(bannerDto.getCode(), bannerDto.getName(), bannerDto.getImgUrl(),
+                    bannerDto.getUserAdd(), bannerDto.getCreateAt());
+            System.out.println("banner : " + bannerEntity);
             bannerService.save(bannerEntity);
+            System.out.println("banner id : "+ bannerEntity.getId());
+            BannerStatusEntity bannerStatusEntity = new BannerStatusEntity(bannerEntity.getId(),bannerDto.getSectionID(), (short) 1);
+            System.out.println("banner status : " + bannerStatusEntity);
+            bannerStatusService.save(bannerStatusEntity);
             return new ResponseEntity<BannerEntity>(bannerEntity, HttpStatus.OK);
         }catch (NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -70,11 +69,11 @@ public class BannerController {
             System.out.println(banner);
             BannerEntity item = bannerService.getById(id);
             item.setCode(banner.getCode());
-            item.setSectionID(banner.getSectionID());
             item.setName(banner.getName());
-            item.setImgUrl(banner.getImgUrl());
-            item.setState(banner.getState());
-            item.setExpired(banner.getExpired());
+            if(banner.getImgUrl() != null){
+                item.setImgUrl(banner.getImgUrl());
+
+            }
             item.setUserFix(banner.getUserFix());
             item.setModifiedAt(banner.getModifiedAt());
             bannerService.save(item);
@@ -104,4 +103,5 @@ public class BannerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 }

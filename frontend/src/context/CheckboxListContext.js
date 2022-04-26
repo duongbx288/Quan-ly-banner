@@ -5,26 +5,33 @@ import { createContext, useState } from "react";
 // Sử dụng để lưu các checkbox đã được tích 
 // để khi chuyển trang (ở phần phân trang) thì 
 // các items đã được tích sẽ vẫn giữ nguyên hiện trạng 
+// đồng thời lưu lại tỉ trọng của từng banner
 const CheckboxArrContext = createContext();
 
 const CheckboxArrProvider = ({children}) => {
     const [countArr, setCountArr] = useState([]);
     
-    const setCheckboxArr = (idNumber) => {
-        setCountArr(state => [...state, idNumber]);
+    const setCheckboxObject = (value) => {
+        setCountArr(state => [...state, value]);
     }
 
     const removeArrItem = (idNumber) => {
         setCountArr(countArr.filter(item => {
-            return item !== idNumber
+            return item.id !== idNumber
         }));
     } 
 
-    console.log(countArr);
+    const updateCheckboxArr = (id, value) => {
+        const tempArr = countArr.map(banner => banner.id === id ? {...banner, rate: value} : banner );
+        setCountArr(tempArr);
+        console.log(tempArr);
+    }
+
 
     const checkboxArray = {
         countArr,
-        setCheckboxArr,
+        setCheckboxObject,
+        updateCheckboxArr,
         removeArrItem
     }
     

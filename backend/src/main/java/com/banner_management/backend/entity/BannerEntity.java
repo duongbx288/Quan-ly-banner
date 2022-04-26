@@ -2,7 +2,6 @@ package com.banner_management.backend.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Table(name = "banners")
@@ -16,10 +15,6 @@ public class BannerEntity {
     @NotNull
     private String code;
 
-    @Column(name = "section_id", nullable = false)
-    @NotNull
-    private int sectionID;
-
     @Column(name = "name", nullable = false)
     @NotNull
     private String name;
@@ -28,13 +23,7 @@ public class BannerEntity {
     @NotNull
     private String imgUrl;
 
-    @Column(name = "state")
-    private short state;
-
-    @Column(name = "expired")
-    private Timestamp expired;
-
-    @Column(name = "user_add", nullable = false)
+    @Column(name = "user_add")
     @NotNull
     private String userAdd;
 
@@ -50,22 +39,28 @@ public class BannerEntity {
 
     public BannerEntity() {
     }
+    public BannerEntity(String code, String name, String imgUrl, String userAdd, Timestamp createAt) {
+        this.code = code;
+        this.name =name;
+        this.imgUrl = imgUrl;
+        this.userAdd = userAdd;
+        this.createAt = createAt;
+    }
+
     @Override
     public String toString() {
         return "BannerEntity{" +
                 "id=" + id +
                 ", code='" + code + '\'' +
-                ", sectionID=" + sectionID +
                 ", name='" + name + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
-                ", state=" + state +
-                ", expired=" + expired +
                 ", userAdd='" + userAdd + '\'' +
                 ", userFix='" + userFix + '\'' +
                 ", createAt=" + createAt +
                 ", modifiedAt=" + modifiedAt +
                 '}';
     }
+
 
     public String getUserAdd() {
         return userAdd;
@@ -101,14 +96,6 @@ public class BannerEntity {
         this.code = code;
     }
 
-    public int getSectionID() {
-        return sectionID;
-    }
-
-    public void setSectionID(int sectionID) {
-        this.sectionID = sectionID;
-    }
-
     public String getName() {
         return name;
     }
@@ -123,22 +110,6 @@ public class BannerEntity {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
-    }
-
-    public short getState() {
-        return state;
-    }
-
-    public void setState(short state) {
-        this.state = state;
-    }
-
-    public Timestamp getExpired() {
-        return expired;
-    }
-
-    public void setExpired(Timestamp expired) {
-        this.expired = expired;
     }
 
     public Timestamp getCreateAt() {

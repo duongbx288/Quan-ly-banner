@@ -23,10 +23,6 @@ public class BannerService  {
         return repository.findAll();
     }
 
-    public List<BannerEntity> listRandomBanner(int sectionID, int id){
-        return repository.getRandomBySectionID(sectionID, id);
-    }
-
     @Transactional
     public void save(BannerEntity bannerEntity){
         repository.save(bannerEntity);

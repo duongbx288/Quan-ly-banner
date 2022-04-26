@@ -19,6 +19,9 @@ import Profile from './components/authentication/Profile';
 import BoardUser from './components/authentication/board-user';
 import BoardAdmin from './components/authentication/board-admin';
 
+import { CheckboxArrProvider } from './context/CheckboxListContext';
+import { CheckboxProvider } from './context/CheckboxContext';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +64,8 @@ class App extends Component {
     const { currentUser, showAdminBoard } = this.state;
     return (
       <div className='wrapper'>
+         <CheckboxArrProvider>
+         <CheckboxProvider>
          {currentUser ? (
           <Layout logOut={this.logOut} roles={this.roles}>
             <Switch>
@@ -79,6 +84,8 @@ class App extends Component {
         ):(
           <Route exact path={["/", "/login"]} component={Login} />
         )}
+        </CheckboxProvider>
+        </CheckboxArrProvider>
 
         {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="navbar-nav mr-auto">
