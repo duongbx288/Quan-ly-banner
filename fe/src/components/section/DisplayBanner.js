@@ -2,10 +2,12 @@ import '../../styles/section/DisplayBanner.css'
 import React, { useEffect, useState } from "react";
 import * as BiIcons from "react-icons/bi";
 import ListBannerChoice from '../banner/ListBannerChoice';
+import { useParams } from 'react-router-dom';
+
 
 const BASE_URL = "http://localhost:8080/api/banners/page/";
 function DisplayBanner(props) {
-
+    let {id} = useParams();
     const [randomChecked, setRandomChecked] = useState(true);
     const [percentageChecked, setpercentageChecked] = useState(false);
     const [quantity, setQuantity] = useState(0);
@@ -61,7 +63,7 @@ function DisplayBanner(props) {
                                         </div>
                                         <div className="col-8">
                                             <input className="form-control text-center" id="bannerID" type="text" name="bannerID"
-                                                value={"123"} disabled
+                                                value={id} disabled
                                             />
                                         </div>
 

@@ -3,15 +3,16 @@ import React from "react-dom";
 import { useEffect, useState } from 'react';
 import Section from "./Section";
 import "../../styles/section/SectionList.css"
+
 function SectionList(props) {
     let { position_web } = useParams();
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [sections, setSections] = useState([]);
-    position_web = props.position_web;
+    // position_web = props.position_web;
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/sapofnb/sections`)
+        fetch(`http://localhost:8080/api/${position_web}/sections`)
             .then(res => res.json())
             .then(
                 (sections) => {
@@ -27,17 +28,12 @@ function SectionList(props) {
                 }
             )
     }, [])
-    const handleClick = () => {
-        props.history.push('/banner/delete');
-    }
+    
     const displaySections = sections.map(
         (data) => {
             console.log("data", data);
             return (
                 <div>
-
-
-
                     <Section id={data.id} />
                 </div>
             )
@@ -50,9 +46,7 @@ function SectionList(props) {
     } else {
         return (
             <div className="container">
-                <button onClick={() => handleClick()}>
-                    {displaySections}
-                </button>
+                {displaySections}
             </div>
         )
     }

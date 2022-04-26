@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 // import { Rnd } from "react-rnd";
 
 function Section(props) {
@@ -9,7 +10,6 @@ function Section(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [section, setSection] = useState([]);
     id = props.id;
-    position_web = props.position_web;
     console.log("id", id)
 
     useEffect(() => {
@@ -60,9 +60,11 @@ function Section(props) {
               minHeight={20}
               bounds="window"
             > */}
-                <div className="section" style={mystyle}>
-                    <h1>Section: {section.id}</h1>
-                </div>
+            <Link to={'/banner/delete/' + section.id}>
+                <button className="section" style={mystyle}>   
+                        <h1>Section: {section.id}</h1>
+                </button>
+            </Link>
                 {/* </Rnd> */}
             </div>
         )
