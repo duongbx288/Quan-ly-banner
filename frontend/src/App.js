@@ -10,7 +10,8 @@ import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
 import Layout from './components/dashboard/Layout';
-
+import { CheckboxProvider } from './context/CheckboxContext';
+import { CheckboxArrProvider } from './context/CheckboxListContext'
 import AuthService from "./services/auth";
 import EventBus from "./common/EventBus";
 import Login from "./components/authentication/Login";
@@ -18,6 +19,7 @@ import Home from "./components/authentication/Home";
 import Profile from './components/authentication/Profile';
 import BoardUser from './components/authentication/board-user';
 import BoardAdmin from './components/authentication/board-admin';
+import SectionList from './components/section/SectionList';
 
 class App extends Component {
   constructor(props) {
@@ -61,6 +63,8 @@ class App extends Component {
     const { currentUser, showAdminBoard } = this.state;
     return (
       <div className='wrapper'>
+         <CheckboxProvider>
+    <CheckboxArrProvider>
          {currentUser ? (
           <Layout logOut={this.logOut} roles={this.roles}>
             <Switch>
@@ -72,13 +76,16 @@ class App extends Component {
               <Route path="/banner/create" exact component={CreateBanner} />
               <Route path="/banner/update/:code" exact component={UpdateBanner} />
               <Route path="/banner/update" exact component={UpdateBanner} />
-              <Route path="/banner/delete" exact component={DisplayBanner} />
+              <Route path="/banner/delete/:id" exact component={DisplayBanner} />
               <Route path="/report" exact component={Contact} />
+              <Route path="/section/:position_web" exact component={SectionList} />
             </Switch> 
           </Layout>
         ):(
           <Route exact path={["/", "/login"]} component={Login} />
         )}
+        </CheckboxArrProvider>
+     </CheckboxProvider>
 
         {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="navbar-nav mr-auto">
