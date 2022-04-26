@@ -60,7 +60,7 @@ const App = () => {
           <Switch>
             {currentUser ? (
               <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
-                <Route exact path={["/", "/home"]}>
+                <Route exact path="/home">
                   <Home/>
                 </Route>
                 <Route path="/profile">
@@ -95,7 +95,7 @@ const App = () => {
                 </Route>
               </Layout>
             ):(
-              <Route exact path="/login">
+              <Route exact path={["/","/login"]}>
                 <Login/>
               </Route>
             )} 
