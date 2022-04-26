@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import '../../styles/banner/CreateBanner.css';
 import BannerService from "../../services/BannerService";
 import * as BiIcons from "react-icons/bi";
-import Contact from "../../pages/ContactUs";
+import Contact from "../../pages/Report";
 
 function CreateBanner(props) {
 

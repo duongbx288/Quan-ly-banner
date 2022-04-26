@@ -3,8 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import Contact from "./pages/ContactUs";
-import BannerManage from "./pages/BannerManage";
+
 import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
@@ -18,14 +17,18 @@ import Home from "./components/authentication/Home";
 import Profile from './components/authentication/Profile';
 import BoardUser from './components/authentication/BoardUser';
 import BoardAdmin from './components/authentication/BoardAdmin';
+import Report from './pages/Report';
+import BannerManage from "./pages/BannerManage";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(undefined);
+  const [username, setUsername] = useState(null);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
+      setUsername(user.username);
       setCurrentUser(user);
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
@@ -42,13 +45,55 @@ const App = () => {
   const logOut = () => {
     AuthService.logout();
     setShowAdminBoard(false);
-    setCurrentUser(null);
+    setCurrentUser(undefined);
   };
 
   return (
     <div className='wrapper'>
-      <Link to={"/"}></Link>
-      {currentUser ? (
+          <Switch>
+            {currentUser ? (
+              <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
+                <Route exact path={["/", "/home"]}>
+                  <Home/>
+                </Route>
+                <Route path="/profile">
+                  <Profile/>
+                </Route>
+                <Route path="/user">
+                  <BoardUser/>
+                </Route>
+                <Route path="/admin">
+                  <BoardAdmin/>
+                </Route>
+                <Route path="/banner/manage">
+                  <BannerManage/>
+                </Route>
+                <Route path="/banner/create" >
+                  <CreateBanner showAdminBoard={showAdminBoard}/>
+                </Route>
+                <Route path="/banner/update/:code">
+                  <UpdateBanner showAdminBoard={showAdminBoard}/>
+                </Route>
+                <Route path="/banner/update">
+                  <UpdateBanner showAdminBoard={showAdminBoard}/>
+                </Route>
+                <Route path="/banner/delete">
+                  <DisplayBanner/>
+                </Route>
+                <Route path="/report">
+                  <Report/>
+                </Route>
+              </Layout>
+            ):(
+              <Route exact path={["/", "/login"]}>
+                <Login/>
+              </Route>
+            )} 
+          </Switch>
+
+
+
+      {/* {currentUser ? (
         <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
           <Switch>
             <Route exact path={["/", "/home"]}>
@@ -73,13 +118,13 @@ const App = () => {
               <UpdateBanner showAdminBoard={showAdminBoard}/>
             </Route>
             <Route path="/banner/update">
-              <UpdateBanner/>
+              <UpdateBanner showAdminBoard={showAdminBoard}/>
             </Route>
             <Route path="/banner/delete">
               <DisplayBanner/>
             </Route>
             <Route path="/report">
-              <Contact/>
+              <Report/>
             </Route>
           </Switch>
         </Layout>
@@ -87,9 +132,9 @@ const App = () => {
         <Route exact path={["/", "/login"]}>
           <Login/>
         </Route>
-      )} 
+      )}  */}
       
-       {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
+      {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
           HOME
         </Link>
