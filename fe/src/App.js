@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route,Link } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -58,8 +58,12 @@ const App = () => {
       <CheckboxProvider>
         <CheckboxArrProvider>
           <Switch>
+            {/* <Route exact path="/">
+              {currentUser ? <Redirect to="/home" /> : <Redirect to="/login"/>}
+            </Route> */}
             {currentUser ? (
               <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
+                <Redirect from="/" to="/home" />
                 <Route exact path="/home">
                   <Home/>
                 </Route>
@@ -95,9 +99,12 @@ const App = () => {
                 </Route>
               </Layout>
             ):(
-              <Route exact path={["/","/login"]}>
-                <Login/>
-              </Route>
+              <div>
+                <Redirect from="/" to="/login" />
+                <Route exact path="/login">
+                  <Login/>
+                </Route>
+              </div>
             )} 
           </Switch>
         </CheckboxArrProvider>
