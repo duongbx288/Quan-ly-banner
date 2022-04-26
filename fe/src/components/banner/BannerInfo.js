@@ -17,7 +17,10 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
     pathname: "/banner/update/" + bannerInfo.code,
     detailInfo: detailInfo
   }
-
+  const bannerDetail = {
+    pathname: "/banner/detail/" + bannerInfo.code,
+    detailInfo: detailInfo
+  }
   const deleteConfirmation = () => {
     const confirm = window.confirm("Do you want to remove this banner?");
     if (confirm === true) {
@@ -53,6 +56,7 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
               </Col>
               <Col xs={4} md={4} lg={6} xl={6} className="detail-show d-flex align-items-center">
                 <button className="btn btn-primary" onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
+                {/* <button type="button" className="btn btn-secondary" ><Link to={bannerDetail}>Show</Link></button> */}
               </Col>
             </Row>
             <Row>
