@@ -104,47 +104,6 @@ const App = () => {
           </Switch>
         </CheckboxArrProvider>
       </CheckboxProvider>
-
-      {/* {currentUser ? (
-        <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
-          <Switch>
-            <Route exact path={["/", "/home"]}>
-              <Home/>
-            </Route>
-            <Route path="/profile">
-              <Profile/>
-            </Route>
-            <Route path="/user">
-              <BoardUser/>
-            </Route>
-            <Route path="/admin">
-              <BoardAdmin/>
-            </Route>
-            <Route path="/banner/manage">
-              <BannerManage/>
-            </Route>
-            <Route path="/banner/create" >
-              <CreateBanner showAdminBoard={showAdminBoard}/>
-            </Route>
-            <Route path="/banner/update/:code">
-              <UpdateBanner showAdminBoard={showAdminBoard}/>
-            </Route>
-            <Route path="/banner/update">
-              <UpdateBanner showAdminBoard={showAdminBoard}/>
-            </Route>
-            <Route path="/banner/delete">
-              <DisplayBanner/>
-            </Route>
-            <Route path="/report">
-              <Report/>
-            </Route>
-          </Switch>
-        </Layout>
-      ):(
-        <Route exact path={["/", "/login"]}>
-          <Login/>
-        </Route>
-      )}  */}
       
       {/* <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
