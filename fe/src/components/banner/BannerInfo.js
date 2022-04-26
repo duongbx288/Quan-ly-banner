@@ -1,5 +1,5 @@
 import "../../styles/banner/BannerInfo.css";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -17,10 +17,12 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
     pathname: "/banner/update/" + bannerInfo.code,
     detailInfo: detailInfo
   }
+
   const bannerDetail = {
     pathname: "/banner/detail/" + bannerInfo.code,
     detailInfo: detailInfo
   }
+  
   const deleteConfirmation = () => {
     const confirm = window.confirm("Do you want to remove this banner?");
     if (confirm === true) {
@@ -32,51 +34,26 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
     }
   };
 
-  const [show, setShow] = useState(true);
-
-  const handleShowInfo = (bannerInfo) => {
-
-    alert("thong tin:", bannerInfo.code)
-  }
-
-
-  const updateBanner = () => {
-    console.log("Update");
-  };
-
   return (
-    <div className="banner-info m-4">
-      {/* <Container> */}
+    <div className="banner-info m-4 p-3">
         <Row>
-          <Col xs={6} lg={4}>
-            <Row>
-              <Col xs={8} md={8} lg={6} xl={6} className="detail-info">
-                <label>NAME</label>
-                <p>{bannerInfo.name}</p>
-              </Col>
-              <Col xs={4} md={4} lg={6} xl={6} className="detail-show d-flex align-items-center">
-                <button className="btn btn-primary" onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
-                {/* <button type="button" className="btn btn-secondary" ><Link to={bannerDetail}>Show</Link></button> */}
-              </Col>
-            </Row>
-            <Row>
-
-            </Row>
+          <Col xs={3} md={3} lg={3} xl={3} className="detail-info">
+            <label>NAME</label>
+            <p>{bannerInfo.name}</p>
           </Col>
-          <Col xs={6} lg={8}>
-            <Row>
-              <Col xs={6} md={10} lg={10} xl={9} className="image-container">
-                <Image src="https://mdbootstrap.com/img/new/slides/041.webp" />
-              </Col>
-              <Col xs={3} md={3} lg={3} xl={2} className="button-choice">
-                <button type="button" className="btn btn-secondary"><Link to={updatePage}>Update</Link></button>
-                <button type="button" className="btn btn-danger" onClick={deleteConfirmation}>Delete</button>
-              </Col>
-            </Row>
+          <Col xs={1} md={1} lg={2} xl={2} className="detail-show d-flex align-items-center justify-content-center">
+            <Link type="button" className="btn btn-secondary py-1 px-3" to={bannerDetail}>Show</Link>
+          </Col>
+          <Col xs={6} md={6} lg={5} xl={5} className="image-container d-flex justify-content-center">
+            <Image src="https://mdbootstrap.com/img/new/slides/041.webp" />
+          </Col>
+          <Col xs={2} md={2} lg={2} xl={2} className="button-choice d-flex flex-column mt-auto p-3">
+            <Link type="button" className="btn btn-secondary py-1 px-3" to={updatePage}>Update</Link>
+            <button type="button" className="btn btn-danger py-1 px-3" onClick={deleteConfirmation}>Delete</button>
           </Col>
         </Row>
-      {/* </Container > */}
     </div >
+
     // <div>
     //   <Container>
     //     <table className="table table-striped">

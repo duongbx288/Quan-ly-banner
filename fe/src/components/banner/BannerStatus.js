@@ -21,7 +21,6 @@ const BannerStatus = ({item}) => {
             countContext.setCheckboxCount(countContext.count - 1);
             checkboxArrContext.removeArrItem(id);
         }
-
     }
 
   return (

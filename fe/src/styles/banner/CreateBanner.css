@@ -1,27 +1,18 @@
 .create-banner-container {
   font-size: 14px;
-  width: calc(1535px - 240px);
-  margin: 0 5px;
-}
-
-.create-banner-container .top {
-  height: 40px;
-}
-
-.create-banner-container .container {
-  margin-bottom: 0;
-}
-
-.create-banner-container .container .header-top {
-  margin-top: 0;
+  font-weight: 500;
 }
 
 .create-banner-container .container .main-content {
   margin: 0 50px 100px 50px;
 }
 
-.create-banner-container .container .main-content .row .col-sm-12 h1 {
-  font-size: 18px;
+.create-banner-container .container .main-content .row .col-sm-12 h2,
+.create-banner-container .container .main-content .row .col-sm-12 h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1;
 }
 
 .create-banner-container .container .main-content .row .col-sm-6.right #imgFrame {

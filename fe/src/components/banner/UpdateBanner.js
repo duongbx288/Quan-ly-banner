@@ -78,23 +78,24 @@ function UpdateBanner(props) {
     }
 
     return (
-
-        <div className="update-banner-container" >
-            <div className="container">
-                <div className="header-top">
-                    <p className="mt-3 text-left">
+        <div className="update-banner-container mx-3" >
+            <div className="header-top">
+                <p className="mt-3 text-left">
                     {props.showAdminBoard ?(<span>Admin</span>) : (<span>User</span>)} 
-                    <BiIcons.BiChevronRight size={20} /> Quản lý banner <BiIcons.BiChevronRight size={20} /> Thêm banner</p>
-                </div>
-                <hr></hr>
+                    <BiIcons.BiChevronRight size={18} />Quản lý banner
+                    <BiIcons.BiChevronRight size={18} />Thêm banner
+                </p>
+            </div>
+            <hr/>
+            <div className="container">
                 <div className="main-content">
                     <div className="row">
-                        <div className="col-sm-12">
-                            <h1>Chỉnh sửa banner</h1>
+                        <div className="col-sm-12 pb-4">
+                            <h2>Chỉnh sửa banner</h2>
                         </div>
                         <div className="col-sm-6 left">
                             <form method="post" encType="multipart/form-data">
-                                <div className="mt-1 form-group">
+                                <div className="mt-3 form-group">
                                     <label htmlFor="bannerID">Mã banner</label>
                                     <input className="form-control" id="bannerID" type="text" name="bannerID"
                                         placeholder="ex: 123..."
@@ -102,27 +103,27 @@ function UpdateBanner(props) {
                                     />
                                 </div>
 
-                                <div className="mt-2 form-group">
+                                <div className="mt-3 form-group">
                                     <label htmlFor="sectionID">Mã khu vực</label>
                                     <input className="form-control" type="text" id="sectionID" name="sectionID"
                                         placeholder="ex: 123..."
                                         value={sectionID} onChange={(e) => setSectionID(e.target.value)} />
                                 </div>
 
-                                <div className="mt-2 form-group">
+                                <div className="mt-3 form-group">
                                     <label htmlFor="name">Tên banner</label>
                                     <input className="form-control" type="text" id="name" name="name"
                                         placeholder="ex: quảng cáo cá tháng tư"
                                         value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
 
-                                <div className="mt-2 form-group">
+                                <div className="mt-3 form-group">
                                     <label htmlFor="expired">Ngày hết hạn banner</label>
                                     <input className="form-control" type="date" id="expired" name="expired"
                                         value={expired} onChange={(e) => setExpired(e.target.value)} />
                                 </div>
 
-                                <div className="mt-2 form-group">
+                                <div className="mt-3 form-group">
                                     <label id="upload-label" htmlFor="upload">Chọn Hình Ảnh</label>
 
                                     <div className="custom-file">
@@ -135,7 +136,7 @@ function UpdateBanner(props) {
                         </div>
                         <div className="col-sm-6 right">
                             <div className="col-sm-12">
-                                <h1 className="text-center">Ảnh minh họa</h1>
+                                <h3 className="text-center">Ảnh minh họa</h3>
                             </div>
                             <div className="col-sm-12" id="imgFrame">
 

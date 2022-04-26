@@ -1,27 +1,5 @@
-/* .banner-info{
-    color: white;
-    background-color: green;
-    margin: 5px;
-    padding: 5px;
-    width: 100%;
-}
-
-.image-container{
-    width: 400px;
-}
-
-img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-} */
-
-
 .banner-info {
-    font-size: 14px;
-    border: 1px solid #bfbebe;
-    padding: 10px;
-    width: 100%;
+    border: 1px solid #7d7d7d;
     border-radius: 10px;
     height: 150px;
 }
@@ -30,30 +8,26 @@ img{
     font-size: 14px;
     font-weight: 500;
 }
+
 .detail-info label{
     font-size: 24px;
     font-weight: 500;
 }
 
-
 .banner-info .image-container,
 .banner-info .button-choice{
     padding: 0;
-    margin-right: 5px;
 }
 
 .banner-info img{
-    height: 100px;
-    min-height: 120px;
+    height: 100%;
     width: 100%;
-    min-width: 100px;
     object-fit: fill;
 }
 
 .banner-info .button-choice button{
-    padding: 2px;
     border: none;
-    margin: 15px;
-    width: 100px;
+    margin-top: 20px;
+    width: 100%;
 }
 

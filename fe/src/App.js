@@ -99,12 +99,12 @@ const App = () => {
                 </Route>
               </Layout>
             ):(
-              <div>
+              <>
                 <Redirect from="/" to="/login" />
                 <Route exact path="/login">
                   <Login/>
                 </Route>
-              </div>
+              </>
             )} 
           </Switch>
         </CheckboxArrProvider>

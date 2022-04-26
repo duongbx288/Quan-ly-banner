@@ -54,50 +54,54 @@ function CreateBanner(props) {
     }
 
     return (
-
-        <div className="create-banner-container" >
-            <div className="container">
-                <div className="header-top">
-                    <p className="mt-3 text-left">
+        <div className="create-banner-container mx-3">
+            <div className="header-top">
+                <p className="mt-3 text-left">
                     {props.showAdminBoard ?(<span>Admin</span>) : (<span>User</span>)} 
-                    <BiIcons.BiChevronRight size={20} /> Quản lý banner <BiIcons.BiChevronRight size={20} /> Thêm banner</p>
-                </div>
-                <hr></hr>
+                    <BiIcons.BiChevronRight size={18}/>Quản lý banner
+                    <BiIcons.BiChevronRight size={18}/>Thêm banner
+                </p>
+            </div>
+            <hr/>
+            <div className="container">
                 <div className="main-content">
                     <div className="row">
-                        <div className="col-sm-12">
-                            <h1>Thêm Mới Banner</h1>
+                        <div className="col-sm-12 pb-4">
+                            <h2>Thêm Mới Banner</h2>
                         </div>
                         <div className="col-sm-6 left">
-                            <form >
-                                <div className="mt-2 form-group">
+                            <form>
+                                <div className="mt-3 form-group">
                                     <label htmlFor="bannerID">Mã banner</label>
                                     <input className="form-control" id="bannerID" type="text" name="bannerID"
                                         placeholder="ex: 123..."
                                         value={bannerID} onChange={(e) => setBannerID(e.target.value)}
                                     />
-
                                 </div>
                                 <div className="mt-3 form-group">
                                     <label htmlFor="name">Tên banner</label>
                                     <input className="form-control" type="text" id="name" name="name"
                                         placeholder="ex: quảng cáo cá tháng tư"
-                                        value={name} onChange={(e) => setName(e.target.value)} />
+                                        value={name} onChange={(e) => setName(e.target.value)} 
+                                    />
                                 </div>
-
                                 <div className="mt-3 form-group">
                                     <label id="upload-label" htmlFor="upload">Chọn Hình Ảnh</label>
                                     <div className="custom-file">
-                                        <input id="upload" type="file" className="form-control border-0" accept=".png,.gif,.jpg,.jpeg"
-                                            onChange={getImage} />
+                                        <input id="upload" 
+                                            type="file" 
+                                            className="form-control border-0" 
+                                            accept=".png,.gif,.jpg,.jpeg"
+                                            onChange={getImage} 
+                                        />
                                     </div>
                                 </div>
-
                             </form>
                         </div>
+
                         <div className="col-sm-6 right">
                             <div className="col-sm-12">
-                                <h1 className="text-center">Ảnh minh họa</h1>
+                                <h3 className="text-center">Ảnh minh họa</h3>
                             </div>
                             <div className="col-sm-12" id="imgFrame">
 
@@ -109,8 +113,6 @@ function CreateBanner(props) {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

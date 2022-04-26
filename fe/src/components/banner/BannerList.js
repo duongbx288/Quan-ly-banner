@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import BannerInfo from "./BannerInfo";
 import "../../styles/banner/BannerList.css";
 import axios from "axios";
@@ -33,11 +32,7 @@ const BannerList = () => {
   return (
     <div className="banner-list m-2">
       <div className="list">
-        <Row>
-          <Col sm={12} lg={10}>
-            {displayBanner}
-          </Col>
-        </Row>
+        {displayBanner}
       </div>
       <PaginateList currentPage={currentPage} setCurrentPage={setCurrentPage} pageNumber={pageNumber}/>
     </div>
