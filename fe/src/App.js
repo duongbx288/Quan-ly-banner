@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -7,11 +7,14 @@ import './App.css';
 import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
+import SectionList from './components/section/SectionList';
 import Layout from './components/dashboard/Layout';
 
 import AuthService from "./services/auth";
 import EventBus from "./common/EventBus";
 
+import { CheckboxProvider } from './context/CheckboxContext';
+import { CheckboxArrProvider } from './context/CheckboxListContext'
 import Login from "./components/authentication/Login";
 import Home from "./components/authentication/Home";
 import Profile from './components/authentication/Profile';
@@ -20,15 +23,16 @@ import BoardAdmin from './components/authentication/BoardAdmin';
 import Report from './pages/Report';
 import BannerManage from "./pages/BannerManage";
 
+
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [username, setUsername] = useState(null);
+  // const [username, setUsername] = useState(null);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
-      setUsername(user.username);
+      // setUsername(user.username);
       setCurrentUser(user);
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
@@ -50,6 +54,8 @@ const App = () => {
 
   return (
     <div className='wrapper'>
+      <CheckboxProvider>
+        <CheckboxArrProvider>
           <Switch>
             {currentUser ? (
               <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
@@ -80,6 +86,12 @@ const App = () => {
                 <Route path="/banner/delete">
                   <DisplayBanner/>
                 </Route>
+                <Route path="/banner/delete/:id">
+                  <DisplayBanner/>
+                </Route>
+                <Route path="/section/:position_web">
+                  <SectionList/>
+                </Route>
                 <Route path="/report">
                   <Report/>
                 </Route>
@@ -90,8 +102,8 @@ const App = () => {
               </Route>
             )} 
           </Switch>
-
-
+        </CheckboxArrProvider>
+      </CheckboxProvider>
 
       {/* {currentUser ? (
         <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
