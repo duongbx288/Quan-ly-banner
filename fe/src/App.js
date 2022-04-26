@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route,Link } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+import AuthService from "./services/auth";
+import EventBus from "./common/EventBus";
+import { CheckboxProvider } from './context/CheckboxContext';
+import { CheckboxArrProvider } from './context/CheckboxListContext'
 
+import Login from "./components/authentication/Login";
+import Home from "./components/authentication/Home";
+import Profile from './components/authentication/Profile';
+import BoardUser from './components/authentication/BoardUser';
+import BoardAdmin from './components/authentication/BoardAdmin';
 import CreateBanner from "./components/banner/CreateBanner";
 import UpdateBanner from "./components/banner/UpdateBanner";
 import DisplayBanner from "./components/section/DisplayBanner";
 import SectionList from './components/section/SectionList';
 import Layout from './components/dashboard/Layout';
 
-import AuthService from "./services/auth";
-import EventBus from "./common/EventBus";
-
-import { CheckboxProvider } from './context/CheckboxContext';
-import { CheckboxArrProvider } from './context/CheckboxListContext'
-import Login from "./components/authentication/Login";
-import Home from "./components/authentication/Home";
-import Profile from './components/authentication/Profile';
-import BoardUser from './components/authentication/BoardUser';
-import BoardAdmin from './components/authentication/BoardAdmin';
 import Report from './pages/Report';
 import BannerManage from "./pages/BannerManage";
 
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [showUserBoard, setShowUserBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
   // const [username, setUsername] = useState(null);
   useEffect(() => {
@@ -35,6 +35,7 @@ const App = () => {
       // setUsername(user.username);
       setCurrentUser(user);
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
+      setShowUserBoard(user.roles.includes("ROLE_USER"));
     }
 
     EventBus.on("logout", () => {
@@ -94,7 +95,7 @@ const App = () => {
                 </Route>
               </Layout>
             ):(
-              <Route exact path={["/", "/login"]}>
+              <Route exact path="/login">
                 <Login/>
               </Route>
             )} 
@@ -179,7 +180,7 @@ const App = () => {
             <DisplayBanner/>
           </Route>
           <Route path="/report">
-            <Contact/>
+            <Report/>
           </Route>
         </Switch>
       </div> */}
