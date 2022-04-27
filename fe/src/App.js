@@ -25,7 +25,6 @@ import BannerManage from "./pages/BannerManage";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
-  const [showUserBoard, setShowUserBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
   // const [username, setUsername] = useState(null);
   useEffect(() => {
@@ -35,7 +34,6 @@ const App = () => {
       // setUsername(user.username);
       setCurrentUser(user);
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
-      setShowUserBoard(user.roles.includes("ROLE_USER"));
     }
 
     EventBus.on("logout", () => {
@@ -58,12 +56,9 @@ const App = () => {
       <CheckboxProvider>
         <CheckboxArrProvider>
           <Switch>
-            {/* <Route exact path="/">
-              {currentUser ? <Redirect to="/home" /> : <Redirect to="/login"/>}
-            </Route> */}
             {currentUser ? (
               <Layout logOut={logOut} showAdminBoard={showAdminBoard}>
-                <Redirect from="/" to="/home" />
+                <Redirect from="/*" to="/home" />
                 <Route exact path="/home">
                   <Home/>
                 </Route>
@@ -100,7 +95,7 @@ const App = () => {
               </Layout>
             ):(
               <>
-                <Redirect from="/" to="/login" />
+                <Redirect from="/*" to="/login" />
                 <Route exact path="/login">
                   <Login/>
                 </Route>
