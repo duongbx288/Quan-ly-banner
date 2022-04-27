@@ -1,19 +1,19 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { Rnd } from "react-rnd";
+import { Rnd } from "react-rnd";
 
 function Section(props) {
     let { position_web } = useParams();
-    let { id } = useParams();
+    // let { id } = useParams();
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [section, setSection] = useState([]);
-    id = props.id;
+    let id = props.id;
     console.log("id", id)
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/sapofnb/sections/${id}`)
+        fetch(`http://localhost:8080/api/${position_web}/sections/${id}`)
             .then(res => res.json())
             .then(
                 (section) => {
@@ -48,7 +48,7 @@ function Section(props) {
     } else {
         console.log("section:", section)
         return (
-            <div>
+             <div>
                 {/* <Rnd
             default={{
                 x: section.position_x,
@@ -66,7 +66,7 @@ function Section(props) {
                 </button>
             </Link>
                 {/* </Rnd> */}
-            </div>
+         </div>
         )
 
     }

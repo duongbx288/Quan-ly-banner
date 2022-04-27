@@ -46,7 +46,7 @@ function DisplayBanner(props) {
                 <div className="top bg-success text-white">Admin</div>
                 <div className="container">
                     <div className="header-top">
-                        <p className="mt-4 text-left"> Admin <BiIcons.BiChevronRight size={20} /> Quản lý hiển thị banner trong khu vực <BiIcons.BiChevronRight size={20} /></p>
+                        <p className="mt-4 text-left"> Admin <BiIcons.BiChevronRight size={20} /> Quản lý hiển thị banner trong khu vực <BiIcons.BiChevronRight size={20} /> Mã khu vực: {id}</p>
                     </div>
                     <hr></hr>
                     <div className="main-content">
