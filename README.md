@@ -1,6 +1,6 @@
 # Quan-ly-banner
-    Trang Quản lý banner --- 
-Thiết lập chương trình:
+Trang Quản lý banner
+    Thiết lập chương trình:
 # BACKEND:
 - Chuyển sang backend "cd backend"
 - Thiết lập database được tạo ra từ backend qua file application.properties ở "/backend/src/main/resource" và config các giá trị sau theo db muốn sử dụng:
