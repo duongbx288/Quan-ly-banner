@@ -4,40 +4,40 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const BASE_URL = "http://localhost:8080/api/banners/";
+const BASE_URL = "http://localhost:8080/api/users/";
 
-const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
+const UserInfo = ({ userInfo, userList, setUserList }) => {
   // 'delete' has to remove the item from bannerList too so that
   // the web will change immediately without having to reload the page
   // as {bannerList} contains the list of banner the 'BannerList' component has
 
-  const [detailInfo, setDetailInfo] = useState(bannerInfo);
+  const [detailInfo, setDetailInfo] = useState(userInfo);
 
   const updatePage = {
-    pathname: "/banner/update/" + bannerInfo.code,
+    pathname: "/banner/update/" + userInfo.code,
     detailInfo: detailInfo
   }
 
   const deleteConfirmation = () => {
-    const confirm = window.confirm("Do you want to remove this banner?");
+    const confirm = window.confirm("Do you want to remove this user?");
     if (confirm === true) {
       axios
-        .delete(BASE_URL + bannerInfo.id)
+        .delete(BASE_URL + userInfo.id)
         .then(() => console.log("Delete successful"));
       //bannerList.filter(info => info.id === bannerInfo.id);
-      setBannerList(bannerList.filter(info => info.id !== bannerInfo.id));
+      setUserList(userList.filter(info => info.id !== userInfo.id));
     }
   };
 
   const [show, setShow] = useState(true);
 
-  const handleShowInfo = (bannerInfo) => {
+  const handleShowInfo = (userInfo) => {
 
-    alert("thong tin:", bannerInfo.code)
+    alert("thong tin:", userInfo.code)
   }
 
 
-  const updateBanner = () => {
+  const updateUer = () => {
     console.log("Update");
   };
 
@@ -49,10 +49,10 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
             <Row>
               <Col xs={6} md={4} lg={4} xl={4} className="detail-info">
                 <p>Name</p>
-                <p>{bannerInfo.name}</p>
+                <p>{userInfo.name}</p>
               </Col>
               <Col xs={6} md={4} lg={4} xl={4} className="detail-show">
-                <button onClick={(bannerInfo) => handleShowInfo(bannerInfo)}>Hide Show</button>
+                <button onClick={(userInfo) => handleShowInfo(userInfo)}>Hide Show</button>
               </Col>
             </Row>
             <Row>
@@ -103,4 +103,4 @@ const BannerInfo = ({ bannerInfo, bannerList, setBannerList }) => {
   );
 };
 
-export default BannerInfo;
+export default UserInfo;

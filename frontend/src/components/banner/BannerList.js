@@ -5,10 +5,11 @@ import "../../styles/banner/BannerList.css";
 import axios from "axios";
 import PaginateList from "../PaginateList";
 
-const BASE_URL = "http://localhost:8080/api/banners/page/";
+const BASE_URL = "http://localhost:8080/api/users/page/";
 
-const BannerList = () => {
-  const [bannerList, setBannerList] = useState([]);
+const UserList = () => {
+
+  const [userList, setUserList] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   // Ở đây dữ liệu nhận được từ API call đã được phân theo trang sẵn ở phần backend, chỉ cần lấy thông tin số trang
@@ -17,17 +18,18 @@ const BannerList = () => {
   useEffect(() => {
     axios.get(BASE_URL + currentPage).then((response) => {
 
-      // Lấy thông tin banner
+      // Lấy thông tin user
       const data = response.data.content;
+      console.log(data)
       // Lấy thông tin tổng số trang 
       const pageNum = response.data.totalPages;
-      setBannerList(data);
+      setUserList(data);
       setPageNumber(pageNum);
     }); 
   }, [currentPage]);   
 
-  const displayBanner = bannerList.map((bannerInfo) => {
-    return <BannerInfo bannerInfo={bannerInfo} key={bannerInfo.id} bannerList={bannerList} setBannerList={setBannerList}/>;
+  const displayUser = userList.map((userInfo) => {
+    return <BannerInfo userInfo={userInfo} key={userInfo.id} userList={userList} setUserList={setUserList}/>;
   });
   
   return (
@@ -35,7 +37,7 @@ const BannerList = () => {
       <Container className="list">
         <Row>
           <Col sm={12} lg={10}>
-            {displayBanner}
+            {displayUser}
           </Col>
         </Row>
       </Container>
@@ -44,4 +46,4 @@ const BannerList = () => {
   );
 };
 
-export default BannerList;
+export default UserList;

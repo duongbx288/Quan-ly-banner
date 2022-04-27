@@ -48,7 +48,7 @@ export const SidebarDataUser = [
         ]
     },
     {
-        title: "Quản lý banner",
+        title: "Quản lý người dùng",
         path: "/banner/manage",
         icon: <MdIcons.MdPictureInPicture size={24} />,
         iconClosed: <BiIcons.BiChevronRight size={24} />,
@@ -56,22 +56,22 @@ export const SidebarDataUser = [
 
         subNav: [
             {
-                title: "Thêm mới banner",
+                title: "Thêm mới người dùng",
                 path: "/banner/create",
                 icon: <BiIcons.BiImageAdd size={24} />,
                 cName: "sub-nav",
             },
             {
-                title: "Cập nhật banner",
+                title: "Cập nhật người dùng",
                 path: "/banner/update/",
                 icon: <MdIcons.MdUpdate size={24} />,
                 cName: "sub-nav",
             },
-            {
-                title: "Xóa banner",
-                path: "/banner/delete",
-                icon: <MdIcons.MdDelete size={24} />,
-            },
+            // {
+            //     title: "Xóa người dùng",
+            //     path: "/banner/delete",
+            //     icon: <MdIcons.MdDelete size={24} />,
+            // },
         ]
     },
     {

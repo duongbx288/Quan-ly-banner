@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import '../../styles/banner/UpdateBanner.css';
-import BannerService from "../../services/BannerService";
+import UserService from "../../services/UserService";
 import * as BiIcons from "react-icons/bi";
 import { useLocation } from "react-router-dom";
-
+    
 
 function UpdateBanner(props) {
 
@@ -17,62 +17,31 @@ function UpdateBanner(props) {
         data = linkState.detailInfo;
         console.log(data);
     }
-    //
+   
 
-    const [bannerID, setBannerID] = useState(data.id);
-    const [bannerCode, setBannerCode] = useState(data.code);
-    const [sectionID, setSectionID] = useState(data.sectionID);
+    const [userID, setUserID] = useState(data.id);
     const [name, setName] = useState(data.name);
-    const [imgUrl, setImgUrl] = useState(); // Dùng để show ảnh
-    const [imgName, setImgName] = useState(data.imgUrl);
-    const [state, setState] = useState(data.state);
-    const [expired, setExpired] = useState(data.expired);
-    const [userAdd, setUserAdd] = useState(data.userAdd);
-    const [userFix, setUserFix] = useState(data.userFix);
-    const [createAt, setCreateAt] = useState(data.createAt);
-    const [modifiedAt, setModifiedAt] = useState(data.modifiedAt);
+    const [email, setEmail] = useState(data.email);
+    const [userName, setUserName] = useState(data.username);
+    const [password, setPassword] = useState(data.password);
+    const [phone, setPhone] = useState(data.phone);
+    const [roles, setRole] = useState(data.roles);
+    console.log(data)
 
-
-    const getImage = (e) => {
-
-        if (e.target.files[0]) {
-
-            setImgUrl(URL.createObjectURL(e.target.files[0])); // đặt bản xem trước 
-        } else console.log("file not found");
-        // setFile(e.target.files[0]);
-        console.log(e.target.files[0].name);
-        setImgName(e.target.files[0].name);
-
-    }
+    
     const saveBanner = (e) => {
         e.preventDefault();
-        let d = new Date();
-        let year = d.getFullYear();
-        let month = d.getMonth() + 1;
-        if (month < 10) {
-            month = '0' + month;
-        }
-        let day = d.getDate();
-        let modifiedAt = year + "-" + month + "-" + day;
 
-        // let state = 1;
-        // let userFix = "Luong Van Minh";
-        // let id = 7;
-
-        let bannerItem = {
-            id: bannerID,
-            code: bannerCode,
-            sectionID: sectionID,
+        let userItem = {
             name: name,
-            imgUrl: imgName,
-            state: state,
-            expired: expired,
-            userFix: userFix,
-            modifiedAt: modifiedAt
+            email: email,
+            username: userName,
+            password: password,
+            phone: phone,
         }
-        console.log('banner => ', bannerItem);
+        console.log('banner => ', userItem);
 
-        BannerService.updateBanner(bannerItem, bannerID).then(res => {
+        UserService.updateUser(userItem, userID).then(res => {
             props.history.push('/banner/manage');
         })
     }
@@ -83,62 +52,87 @@ function UpdateBanner(props) {
             <div className="top bg-success text-white">Admin</div>
             <div className="container">
                 <div className="header-top">
-                    <p className="mt-4 text-left"> Admin <BiIcons.BiChevronRight size={20} /> Quản lý banner <BiIcons.BiChevronRight size={20} /> Thêm banner</p>
+                    <p className="mt-4 text-left"> Admin <BiIcons.BiChevronRight size={20} /> Quản lý người dùng <BiIcons.BiChevronRight size={20} /> Thêm người dùng</p>
                 </div>
                 <hr></hr>
                 <div className="main-content">
                     <div className="row">
                         <div className="col-sm-12">
-                            <h1>Chỉnh sửa banner</h1>
+                            <h1>Chỉnh sửa người dùng</h1>
                         </div>
                         <div className="col-sm-6 left">
                             <form method="post" encType="multipart/form-data">
-                                <div className="mt-1 form-group">
-                                    <label htmlFor="bannerID">Mã banner</label>
-                                    <input className="form-control" id="bannerID" type="text" name="bannerID"
-                                        placeholder="ex: 123..."
-                                        value={bannerCode} onChange={(e) => setBannerCode(e.target.value)}
+                        
+                                <div className="mt-2 form-group">
+                                    <label htmlFor="sectionID">Tên người dùng</label>
+                                    <input className="form-control" type="text" id="name" name="name"
+                                        placeholder="ex: Phung Cong Cuong."
+                                        value={name} onChange={(e) => setName(e.target.value)} 
                                     />
                                 </div>
 
                                 <div className="mt-2 form-group">
-                                    <label htmlFor="sectionID">Mã khu vực</label>
-                                    <input className="form-control" type="text" id="sectionID" name="sectionID"
-                                        placeholder="ex: 123..."
-                                        value={sectionID} onChange={(e) => setSectionID(e.target.value)} />
+                                    <label htmlFor="name">Email</label>
+                                    <input className="form-control" type="email" id="email" name="email"
+                                        placeholder="ex: sapo1@gmail.com"
+                                        value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
 
                                 <div className="mt-2 form-group">
-                                    <label htmlFor="name">Tên banner</label>
-                                    <input className="form-control" type="text" id="name" name="name"
-                                        placeholder="ex: quảng cáo cá tháng tư"
-                                        value={name} onChange={(e) => setName(e.target.value)} />
+                                    <label htmlFor="name">Phone</label>
+                                    <input className="form-control" type="text" id="password" name="password"
+                                        placeholder="ex: 0934.333.444"
+                                        value={phone} onChange={(e) => setPhone(e.target.value)} />
                                 </div>
 
                                 <div className="mt-2 form-group">
+                                    <label htmlFor="name">Username</label>
+                                    <input className="form-control" type="text" id="username" name="username"
+                                        placeholder="ex: sapo1"
+                                        value={userName} onChange={(e) => setUserName(e.target.value)} />
+                                </div>
+
+                                
+
+                                {/* <div className="chossing-role">
+                                    {allRoles.map(role =>(
+                                        <div key = {role.id}>
+                                            <input
+                                                type="radio"
+                                                checked={checked === role.id} 
+                                                onChange={() => setChecked(role.id)}
+                                            />
+                                            {role.name}
+                                        </div>
+                                    ))}
+                                </div> */}
+
+                                
+
+                                {/* <div className="mt-2 form-group">
                                     <label htmlFor="expired">Ngày hết hạn banner</label>
                                     <input className="form-control" type="date" id="expired" name="expired"
                                         value={expired} onChange={(e) => setExpired(e.target.value)} />
-                                </div>
+                                </div> */}
 
                                 <div className="mt-2 form-group">
-                                    <label id="upload-label" htmlFor="upload">Chọn Hình Ảnh</label>
+                                    {/* <label id="upload-label" htmlFor="upload">Chọn Hình Ảnh</label> */}
 
-                                    <div className="custom-file">
+                                    {/* <div className="custom-file">
                                         <input id="upload" type="file" className="form-control border-0" accept=".png,.gif,.jpg,.jpeg"
                                             onChange={getImage} />
-                                    </div>
+                                    </div> */}
                                 </div>
 
                             </form>
                         </div>
                         <div className="col-sm-6 right">
                             <div className="col-sm-12">
-                                <h1 className="text-center">Ảnh minh họa</h1>
+                                {/* <h1 className="text-center">Ảnh minh họa</h1> */}
                             </div>
                             <div className="col-sm-12" id="imgFrame">
 
-                                <img className="img-rounded" alt="ảnh banner" src={imgUrl} />
+                                {/* <img className="img-rounded" alt="ảnh banner" src={imgUrl} /> */}
 
                             </div>
                             <div className="button">

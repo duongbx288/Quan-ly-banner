@@ -30,13 +30,13 @@ const SideBarHead = styled.div`
 
 
 export default function Sidebar(props) {
-  // let AdminTab;
-  // if (props.roles = "ROLE_ADMIN")
-  // {
-  //   AdminTab = SidebarDataAdmin.map((item, index) => {
-  //     return <SubMenu item={item} key={index}/>;
-  //   }
-  // )}
+//   let AdminTab;
+//   if (props.roles = "ROLE_ADMIN")
+//   {
+//     AdminTab = SidebarDataAdmin.map((item, index) => {
+//       return <SubMenu item={item} key={index}/>;
+//     }
+//   )}
   return (
     <>
       <SidebarNav>
