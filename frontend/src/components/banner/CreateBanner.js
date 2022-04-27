@@ -30,18 +30,15 @@ function CreateBanner(props) {
     
 
       
-    const validator = new Validator(rules);
+    // const validator = new Validator(rules);
 
    
 
-    const inputEl = (null); // biến để giới thiệu đầu vào ẩn
+    const inputEl = (null); 
 
     const saveUser = (e) => {
         e.preventDefault();
-        // let d = new Date();
 
-        // let state = 0;
-        // let userAdd = "Luong Van Minh";
 
         let userItem = {
             name: name,
